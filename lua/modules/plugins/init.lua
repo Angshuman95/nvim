@@ -141,13 +141,13 @@ modules['hrsh7th/vim-vsnip'] = { after = 'nvim-compe' }
 modules['rafamadriz/friendly-snippets'] = { after = 'nvim-compe' }
 
 modules['nvim-telescope/telescope.nvim'] = {
-  cmd = 'Telescope',
-  config = completion_config.telescope,
-  requires = {
-    {'nvim-lua/popup.nvim', opt = true},
-    {'nvim-lua/plenary.nvim',opt = true},
-    {'nvim-telescope/telescope-fzy-native.nvim',opt = true},{'nvim-telescope/telescope-project.nvim', opt = true}
-  }
+    cmd = 'Telescope',
+    config = completion_config.telescope,
+    requires = {
+        {'nvim-lua/popup.nvim', opt = true},
+        {'nvim-lua/plenary.nvim',opt = true},
+        {'nvim-telescope/telescope-fzy-native.nvim',opt = true},{'nvim-telescope/telescope-project.nvim', opt = true}
+    }
 }
 
 modules['onsails/lspkind-nvim'] = {config = completion_config.lspkind}
