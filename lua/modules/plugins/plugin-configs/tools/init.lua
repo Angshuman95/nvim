@@ -74,6 +74,8 @@ function config.whichkey()
     vim.api.nvim_set_keymap('n', '<leader>b', ':Telescope buffers<CR>', {noremap = true, silent = true})
     vim.api.nvim_set_keymap('n', '<leader>p', ":lua require'telescope'.extensions.project.project{}<CR>",
                             {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<C-f>', ":lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", {silent = true})
+    vim.api.nvim_set_keymap('n', '<C-b>', ":lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", {silent = true})
 
     local mappings = {
         [';'] = "Dashboard",
