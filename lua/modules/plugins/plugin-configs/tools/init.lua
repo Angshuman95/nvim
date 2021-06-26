@@ -164,8 +164,16 @@ function config.whichkey()
             s = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
             S = {"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols"}
         },
-        S = {name = "+Session", s = {"<cmd>SessionSave<cr>", "Save Session"}, l = {"<cmd>SessionLoad<cr>", "Load Session"}},
-
+        S = {
+            name = "+Session",
+            s = {"<cmd>SessionSave<cr>", "Save Session"},
+            l = {"<cmd>SessionLoad<cr>", "Load Session"}
+        },
+        t = {
+            name = "+Terminal",
+            g = {"<Cmd>FloatermNew lazygit<CR>", "Git"},
+            n = {"<Cmd>FloatermNew lazynode<CR>", "Node"}
+        }
     }
 
     local wk = require("which-key")
