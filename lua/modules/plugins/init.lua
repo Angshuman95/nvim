@@ -72,7 +72,9 @@ modules['lewis6991/gitsigns.nvim'] = {
     requires = {'nvim-lua/plenary.nvim', opt = true}
 }
 
-modules['tpope/vim-fugitive'] = {}
+modules['tpope/vim-fugitive'] = {
+    requires = 'tpope/vim-rhubarb'
+}
 
 modules['sindrets/diffview.nvim'] = {
     cmd = {
