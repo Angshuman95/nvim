@@ -1,8 +1,7 @@
 local O = require('utils.option')
 
-O.g({
+O.b({
     tabstop = 2,
     softtabstop = 2,
     shiftwidth = 2,
-    expandtab = true,
 })
