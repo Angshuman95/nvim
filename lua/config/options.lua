@@ -84,4 +84,4 @@ O.w({
 vim.cmd[[let &colorcolumn="80,".join(range(120,999),",")]]
 
 -- filetype
-vim.cmd[[filetype plugin indent on]]
+-- vim.cmd[[filetype plugin indent on]]

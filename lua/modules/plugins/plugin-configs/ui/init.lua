@@ -59,12 +59,6 @@ function config.galaxyline()
         info_yellow = '#FFCC66'
     }
     local condition = require("galaxyline.condition")
-    local buffer_not_empty = function()
-        if vim.fn.empty(vim.fn.expand("%:t")) ~= 1 then
-            return true
-        end
-        return false
-    end
     local gls = gl.section
     gl.short_line_list = {
         "NvimTree", "vista", "dbui", "packer"
@@ -114,14 +108,14 @@ function config.galaxyline()
     gls.left[2] = {
         FileIcon = {
             provider = "FileIcon",
-            condition = buffer_not_empty,
+            condition = condition.buffer_not_empty,
             highlight = {colors.fg, colors.bg}
         }
     }
     gls.left[3] = {
         FileName = {
             provider = {"FileName"},
-            condition = buffer_not_empty,
+            condition = condition.buffer_not_empty,
             separator = " ",
             separator_highlight = {"NONE", colors.bg},
             highlight = {colors.fg, colors.bg}

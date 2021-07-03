@@ -154,7 +154,7 @@ modules['onsails/lspkind-nvim'] = {config = completion_config.lspkind}
 
 modules['mattn/emmet-vim'] = {
     event = 'InsertEnter',
-    ft = {'html','css','javascript','javascriptreact','vue','typescript','typescriptreact'},
+    ft = {'html','css','javascript','javascriptreact','vue','typescript','typescriptreact','cshtml'},
     config = completion_config.emmet
 }
 
