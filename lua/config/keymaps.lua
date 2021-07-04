@@ -18,10 +18,10 @@ K.g({
     { 'v', '>', '>gv', { noremap = true } },
     { 'v', '<', '<gv', { noremap = true } },
 
-    { 'n', '<C-h>', ':vertical resize -2<CR>' },
-    { 'n', '<C-l>', ':vertical resize +2<CR>' },
-    { 'n', '<C-k>', ':resize +2<CR>' },
-    { 'n', '<C-j>', ':resize -2<CR>' },
+    { 'n', '<C-Left>', ':vertical resize -2<CR>' },
+    { 'n', '<C-Right>', ':vertical resize +2<CR>' },
+    { 'n', '<C-Up>', ':resize +2<CR>' },
+    { 'n', '<C-Down>', ':resize -2<CR>' },
 
 -- Move blocks of selected code
     {'v', 'K', ":move '<-2<CR>gv-gv"}, -- Move up
