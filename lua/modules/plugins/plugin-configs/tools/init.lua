@@ -66,6 +66,7 @@ function config.whichkey()
     vim.g.mapleader = ' '
     vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', {noremap = true, silent = true})
     vim.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<Leader>m', ':MaximizerToggle<CR>', {noremap = true, silent = true})
     vim.api.nvim_set_keymap('n', '<Leader>f', ':Telescope find_files<CR>', {noremap = true, silent = true})
     vim.api.nvim_set_keymap('n', '<Leader>;', ':Dashboard<CR>', {noremap = true, silent = true})
     vim.api.nvim_set_keymap("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
@@ -84,6 +85,7 @@ function config.whichkey()
         ["e"] = "Explorer",
         ["f"] = "Find File",
         ["h"] = "No Highlight",
+        ["m"] = "Maximize",
         ["p"] = "Projects",
         d = {
             name = "+Debug",

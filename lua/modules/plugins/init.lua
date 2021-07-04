@@ -201,4 +201,9 @@ modules['windwp/nvim-spectre'] = {
     }
 }
 
+modules['szw/vim-maximizer'] = {
+    cmd = 'MaximizerToggle'
+}
+
+
 return modules
