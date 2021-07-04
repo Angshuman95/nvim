@@ -22,10 +22,15 @@ modules['glepnir/dashboard-nvim'] = {
     config = ui_config.dashboard
 }
 
-modules['glepnir/galaxyline.nvim'] = {
-    branch = 'main',
-    config = ui_config.galaxyline,
-    requires = 'kyazdani42/nvim-web-devicons'
+-- modules['glepnir/galaxyline.nvim'] = {
+--     branch = 'main',
+--     config = ui_config.galaxyline,
+--     requires = 'kyazdani42/nvim-web-devicons'
+-- }
+
+modules['hoob3rt/lualine.nvim'] = {
+    config = ui_config.lualine,
+    requires = {'kyazdani42/nvim-web-devicons', opt = true}
 }
 
 modules['lukas-reineke/indent-blankline.nvim'] = {

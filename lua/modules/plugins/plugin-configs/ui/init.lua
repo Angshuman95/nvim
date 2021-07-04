@@ -304,6 +304,58 @@ function config.galaxyline()
 end
 
 
+function config.lualine()
+    require('lualine').setup {
+        options = {
+            icons_enabled = true,
+            theme = 'onedark',
+            section_separators = {'', ''},
+            component_separators = {'', ''},
+            disabled_filetypes = {}
+        },
+        sections = {
+            lualine_a = {'mode'},
+            lualine_b = {'branch'},
+            lualine_c = {
+                'filename',
+                {
+                    'diff',
+                    colored = true,
+                    symbols = { added = '  ', modified = '  ', removed = '  ' },
+                    color_added = '#608B4E',
+                    color_modified = '#569CD6',
+                    color_removed = '#D16969'
+                }
+            },
+            lualine_x = {
+                {
+                    'diagnostics',
+                    sources = {"nvim_lsp"},
+                    symbols = {error = '  ', warn = '  ', info = '  ', hint = '  '},
+                    color_error = '#F44747',
+                    color_warn = '#FF8800',
+                    color_hint = '#FFCC66',
+                    color_info = '#4FC1FF'
+                },
+                'encoding',
+                'fileformat',
+                'filetype'
+            },
+            lualine_y = {'progress'},
+            lualine_z = {'location'}
+        },
+        inactive_sections = {
+            lualine_a = {},
+            lualine_b = {},
+            lualine_c = {'filename'},
+            lualine_x = {'location'},
+            lualine_y = {},
+            lualine_z = {}
+        },
+    }
+end
+
+
 function config.indent_blankline()
     vim.g.indent_blankline_char = "▏"
     vim.g.indent_blankline_show_first_indent_level = true
