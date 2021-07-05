@@ -66,7 +66,7 @@ O.g({
     equalalways = false,
     laststatus = 2,
     display = 'lastline',
-    foldmethod = 'indent',
+    foldmethod = 'manual',
     showbreak = ' ↳  ',
     wrap = true,
     listchars = 'tab:»·,nbsp:+,trail:·,extends:→,precedes:←',
