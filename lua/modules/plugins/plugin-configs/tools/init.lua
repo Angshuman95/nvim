@@ -87,6 +87,11 @@ function config.whichkey()
         ["h"] = "No Highlight",
         ["m"] = "Maximize",
         ["p"] = "Projects",
+        ["."] = {
+            name = "+Virtual Text",
+            s = {"<cmd>lua require('modules.lsp.virtualtext').show()<CR>", "Show"},
+            h = {"<cmd>lua require('modules.lsp.virtualtext').hide()<CR>", "Hide"}
+        },
         d = {
             name = "+Debug",
             b = {"<cmd>DebugToggleBreakpoint<cr>", "Toggle Breakpoint"},
