@@ -77,9 +77,7 @@ modules['lewis6991/gitsigns.nvim'] = {
     requires = {'nvim-lua/plenary.nvim', opt = true}
 }
 
-modules['tpope/vim-fugitive'] = {
-    requires = 'tpope/vim-rhubarb'
-}
+modules['tpope/vim-fugitive'] = {}
 
 modules['sindrets/diffview.nvim'] = {
     cmd = {
@@ -183,8 +181,17 @@ modules['folke/which-key.nvim'] = {
     config = tools_config.whichkey
 }
 
+modules['kristijanhusak/vim-dadbod-ui'] = {
+    cmd = {'DBUIToggle','DBUIAddConnection','DBUI','DBUIFindBuffer','DBUIRenameBuffer'},
+    config = tools_config.vim_dadbod_ui,
+    requires = {
+        {'tpope/vim-dadbod', opt = true},
+        {'kristijanhusak/vim-dadbod-completion', opt = true}
+    }
+}
+
 modules['iamcco/markdown-preview.nvim'] = {
-    event = {'VimEnter', 'BufReadPre'},
+    ft = 'markdown',
     run = 'cd app && yarn install'
 }
 
