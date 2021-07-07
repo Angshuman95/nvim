@@ -6,7 +6,7 @@ O.g({
     background = 'dark',
     termguicolors = true,
     confirm = true,
-    shell = 'zsh',
+    shell = 'fish',
     mouse = 'nv',
     hidden = true,
     tabstop = 4,
