@@ -63,7 +63,7 @@ O.g({
     helpheight = 12,
     previewheight = 12,
     showcmd = true,
-    equalalways = false,
+    equalalways = true,
     laststatus = 2,
     display = 'lastline',
     foldmethod = 'manual',
