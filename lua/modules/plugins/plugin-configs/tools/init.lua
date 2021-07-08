@@ -78,6 +78,9 @@ function config.whichkey()
     vim.api.nvim_set_keymap('n', '<C-f>', ":lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", {silent = true})
     vim.api.nvim_set_keymap('n', '<C-b>', ":lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", {silent = true})
 
+    vim.api.nvim_buf_set_keymap(0, 'v', '<leader>ljav', '<Esc><Cmd>lua require("jdtls").extract_variable(true)<CR>', {noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(0, 'v', '<leader>ljam', '<Esc><Cmd>lua require("jdtls").extract_method(true)<CR>', {noremap = true, silent = true})
+
     local mappings = {
         [';'] = "Dashboard",
         ["/"] = "Comment",
@@ -138,7 +141,8 @@ function config.whichkey()
                 d = {"<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition"},
                 D = {"<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration"},
                 i = {"<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation"},
-                r = {"<cmd>lua vim.lsp.buf.references()<CR>", "References"}
+                r = {"<cmd>lua vim.lsp.buf.references()<CR>", "References"},
+                s = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help"}
             },
             d = {
                 name = "+Diagnostics",
@@ -147,6 +151,17 @@ function config.whichkey()
                 f = {"<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", "File Diagnostics"},
                 ["["] = {"<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "Next Diagnostic"},
                 ["]"] = {"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Previous Diagnostic"},
+            },
+            j = {
+                name = "+Java - jdtls",
+                a = {
+                    name = "Extract - visual mode",
+                    v = 'Variable',
+                    m = 'method'
+                },
+                i = {"<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports"},
+                v = {"<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable"},
+                R = {"<Cmd>lua require('jdtls').code_action(false, 'refactor')<CR>", "Refactor"}
             },
             p = {
                 name = "+Preview",

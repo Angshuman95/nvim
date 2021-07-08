@@ -113,6 +113,11 @@ modules['kevinhwang91/nvim-bqf'] = {
     opt = true
 }
 
+modules['mfussenegger/nvim-jdtls'] = {
+    ft = {'java'},
+    config = languages_config.jdtls
+}
+
 modules['nvim-treesitter/nvim-treesitter'] = {
     event = 'BufRead',
     config = languages_config.treesitter,

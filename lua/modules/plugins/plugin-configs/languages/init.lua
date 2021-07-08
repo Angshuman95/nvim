@@ -16,9 +16,22 @@ function config.lspsaga()
         vim.cmd [[packadd lspsaga.nvim]]
     end
 
-    require("lspsaga").init_lsp_saga({
-        code_action_icon = '💡'
-    })
+    require("lspsaga").init_lsp_saga()
+end
+
+
+function config.jdtls()
+    local data_dir = vim.fn.stdpath('data')
+    require('jdtls').start_or_attach({cmd = {data_dir .. '/lspinstall/java/launch_jdtls'}})
+
+    vim.api.nvim_buf_set_keymap(0,'n','K','<cmd>lua vim.lsp.buf.hover()<CR>',
+        {noremap = true, silent = true})
+
+    vim.cmd[[command! -buffer JdtCompile lua require('jdtls').compile()]]
+    vim.cmd[[command! -buffer JdtUpdateConfig lua require('jdtls').update_project_config()]]
+    vim.cmd[[command! -buffer JdtJol lua require('jdtls').jol()]]
+    vim.cmd[[command! -buffer JdtBytecode lua require('jdtls').javap()]]
+    vim.cmd[[command! -buffer JdtJshell lua require('jdtls').jshell()]]
 end
 
 
