@@ -7,52 +7,78 @@ end
 
 
 function config.autopairs()
-    local remap = vim.api.nvim_set_keymap
-    local npairs = require('nvim-autopairs')
-    local Rule = require('nvim-autopairs.rule')
+    if not packer_plugins["nvim-treesitter"].loaded then
+        vim.cmd [[packadd nvim-treesitter]]
+    end
+    require("nvim-autopairs").setup()
+    local npairs = require("nvim-autopairs")
 
-    -- skip it, if you use another global object
-    _G.MUtils= {}
+    _G.MUtils = {}
 
     vim.g.completion_confirm_key = ""
-    MUtils.completion_confirm=function()
-        if vim.fn.pumvisible() ~= 0  then
+    MUtils.completion_confirm = function()
+        if vim.fn.pumvisible() ~= 0 then
             if vim.fn.complete_info()["selected"] ~= -1 then
-                return vim.fn["compe#confirm"](npairs.esc("<cr>"))
+                vim.fn["compe#confirm"]()
+                return npairs.esc("")
             else
-                return npairs.esc("<cr>")
+                vim.defer_fn(function()
+                    vim.fn["compe#confirm"]("<cr>")
+                end, 20)
+                return npairs.esc("<c-n>")
             end
         else
-            return npairs.autopairs_cr()
+            return npairs.check_break_line_char()
         end
     end
 
+    MUtils.completion_confirm = function()
+        if vim.fn.pumvisible() ~= 0 then
+            if vim.fn.complete_info()["selected"] ~= -1 then
+                vim.fn["compe#confirm"]()
+                return npairs.esc("")
+            else
+                vim.api.nvim_select_popupmenu_item(0, false, false, {})
+                vim.fn["compe#confirm"]()
+                return npairs.esc("<c-n>")
+            end
+        else
+            return npairs.check_break_line_char()
+        end
+    end
 
-    remap('i' , '<CR>','v:lua.MUtils.completion_confirm()',
-        { expr = true , noremap = true })
+    MUtils.tab = function()
+        if vim.fn.pumvisible() ~= 0 then
+            return npairs.esc("<C-n>")
+        else
+            if vim.fn["vsnip#available"](1) ~= 0 then
+                vim.fn.feedkeys(string.format("%c%c%c(vsnip-expand-or-jump)",
+                                              0x80, 253, 83))
+                return npairs.esc("")
+            else
+                return npairs.esc("<Tab>")
+            end
+        end
+    end
 
-    npairs.setup({
-        check_ts = true,
-        ts_config = {
-            lua = {'string'},-- it will not add pair on that treesitter node
-            javascript = {'template_string'},
-            java = false,-- don't check treesitter on java
-        }
-    })
+    MUtils.s_tab = function()
+        if vim.fn.pumvisible() ~= 0 then
+            return npairs.esc("<C-p>")
+        else
+            if vim.fn["vsnip#jumpable"](-1) ~= 0 then
+                vim.fn.feedkeys(string.format("%c%c%c(vsnip-jump-prev)", 0x80,
+                                              253, 83))
+                return npairs.esc("")
+            else
+                return npairs.esc("<C-h>")
+            end
+        end
+    end
 
-    require('nvim-treesitter.configs').setup {
-        autopairs = {enable = true}
-    }
-
-    local ts_conds = require('nvim-autopairs.ts-conds')
-
-    -- press % => %% is only inside comment or string
-    npairs.add_rules({
-        Rule("%", "%", "lua")
-            :with_pair(ts_conds.is_ts_node({'string','comment'})),
-        Rule("$", "$", "lua")
-            :with_pair(ts_conds.is_not_ts_node({'function'}))
-    })
+    vim.api.nvim_set_keymap("i", "<CR>", "v:lua.MUtils.completion_confirm()",
+                            {expr = true, noremap = true})
+    vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.MUtils.tab()", {expr = true, noremap = true})
+    vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.MUtils.s_tab()", {expr = true, noremap = true})
 end
 
 
