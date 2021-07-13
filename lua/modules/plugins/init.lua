@@ -113,7 +113,7 @@ modules['mfussenegger/nvim-jdtls'] = {
 }
 
 modules['nvim-treesitter/nvim-treesitter'] = {
-    event = 'BufRead',
+    event = {'BufRead', 'BufNewFile'},
     config = languages_config.treesitter,
     run = ':TSUpdate'
 }
