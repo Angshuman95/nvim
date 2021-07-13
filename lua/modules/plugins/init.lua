@@ -121,7 +121,6 @@ modules['mfussenegger/nvim-jdtls'] = {
 modules['nvim-treesitter/nvim-treesitter'] = {
     event = 'BufRead',
     config = languages_config.treesitter,
-    requires = {{'nvim-treesitter/playground', opt = true}},
     run = ':TSUpdate'
 }
 
