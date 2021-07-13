@@ -66,6 +66,7 @@ function config.lualine()
                 ["NvimTree"] = true,
                 ["dashboard"] = true,
                 ["packer"] = true,
+                ["spectre_panel"] = true,
                 [" "] = true
             }
             if tbl[vim.bo.filetype] then return false end
