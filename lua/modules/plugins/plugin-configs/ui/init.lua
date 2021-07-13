@@ -31,7 +31,7 @@ function config.dashboard()
         e = { description = { '  Find Word          ' },
                 command = 'Telescope live_grep' },
         f = { description = { '  Settings           ' },
-                command = ':vs ' .. '$HOME/.config/nvim/lua/config/options.lua' }
+                command = 'Telescope vim_options' }
     }
 end
 
