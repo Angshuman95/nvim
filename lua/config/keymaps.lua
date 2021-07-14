@@ -5,12 +5,12 @@ K.g({
     { 'n', '<Esc>', '<Esc>:nohlsearch<CR><Esc>', { noremap = true, silent = true } },
 
 -- Cut copy paste
-    { 'v', 'qp', '"+y' },
-    { 'n', 'qp', '"+y', { noremap = true } },
-    { 'n', 'qpp', '"+yy', { noremap = true } },
-    { 'v', 'qd', '"+d' },
-    { 'n', 'qd', '"+d', { noremap = true } },
-    { 'n', 'qdd', '"+dd', { noremap = true } },
+    { 'v', 'mc', '"+y' },
+    { 'n', 'mc', '"+y', { noremap = true } },
+    { 'n', 'mcc', '"+yy', { noremap = true } },
+    { 'v', 'md', '"+d' },
+    { 'n', 'md', '"+d', { noremap = true } },
+    { 'n', 'mdd', '"+dd', { noremap = true } },
     { 'n', 'zp', '"+p' },
     { 'n', 'zP', '"+P' },
 
