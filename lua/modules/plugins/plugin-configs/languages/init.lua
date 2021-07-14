@@ -22,7 +22,12 @@ end
 
 function config.jdtls()
     local data_dir = vim.fn.stdpath('data')
-    require('jdtls').start_or_attach({cmd = {data_dir .. '/lspinstall/java/launch_jdtls'}})
+    require('jdtls').start_or_attach(
+        {
+            cmd = {data_dir .. '/lspinstall/java/launch_jdtls'},
+            filetypes = {"java"}
+        }
+    )
 
     vim.api.nvim_buf_set_keymap(0,'n','K','<cmd>lua vim.lsp.buf.hover()<CR>',
         {noremap = true, silent = true})

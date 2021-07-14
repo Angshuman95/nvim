@@ -140,10 +140,10 @@ function config.lualine()
                         local clients = vim.lsp.get_active_clients()
                         if next(clients) == nil then return msg end
                         for _, client in ipairs(clients) do
-                        local filetypes = client.config.filetypes
-                        if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-                            return client.name
-                        end
+                            local filetypes = client.config.filetypes
+                            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                                return client.name
+                            end
                         end
                         return msg
                     end,
