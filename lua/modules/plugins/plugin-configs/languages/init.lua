@@ -25,7 +25,8 @@ function config.jdtls()
     require('jdtls').start_or_attach(
         {
             cmd = {data_dir .. '/lspinstall/java/launch_jdtls'},
-            filetypes = {"java"}
+            filetypes = {"java"},
+            root_dir = require('jdtls.setup').find_root({'gradle.build', 'pom.xml', '.'})
         }
     )
 
