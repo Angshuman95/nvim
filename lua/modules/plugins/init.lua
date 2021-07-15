@@ -123,6 +123,11 @@ modules['simrat39/symbols-outline.nvim'] = {
     config = languages_config.symbols
 }
 
+modules['rcarriga/nvim-dap-ui'] = {
+    requires = 'mfussenegger/nvim-dap',
+    config = languages_config.dap_ui
+}
+
 
 -- ======================================================================>
 -- Completion Modules

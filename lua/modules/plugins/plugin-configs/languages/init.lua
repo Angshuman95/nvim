@@ -62,5 +62,119 @@ function config.symbols()
     }
 end
 
+function config.dap_ui()
+    if not packer_plugins['nvim-dap'].loaded or
+        not packer_plugins['nvim-dap-ui'].loaded then
+        vim.cmd[[packadd nvim-dap]]
+        vim.cmd[[packadd nvim-dap-ui]]
+    end
+
+    local dap = require('dap')
+
+    vim.fn.sign_define("DapBreakpoint", {text = "●", texthl = "", linehl = "", numhl = ""})
+    vim.fn.sign_define("DapStopped", {text = "●▶", texthl = "", linehl = "", numhl = ""})
+    vim.fn.sign_define("DapLogPoint", {text = "▶", texthl = "", linehl = "", numhl = ""})
+
+
+    vim.api.nvim_set_keymap('n', '<A-b>', ':lua require"dap".toggle_breakpoint()<CR>', {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<A-h>', ':lua require"dap".continue()<CR>', {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<A-l>', ':lua require"dap".step_over()<CR>', {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<A-j>', ':lua require"dap".step_into()<CR>', {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<A-k>', ':lua require"dap".step_out()<CR>', {noremap = true, silent = true})
+
+
+    dap.adapters.cpp = {
+        type = "executable",
+        attach = {pidProperty = "pid", pidSelect = "ask"},
+        command = "lldb-vscode",
+        name = "lldb"
+    }
+
+    dap.configurations.cpp = {
+        {
+            type = "cpp",
+            request = "launch",
+            name = "Launch",
+            program = function()
+                return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+            end,
+            args = {},
+            cwd = "${workspaceFolder}",
+            env = function()
+                local variables = {}
+                for k, v in pairs(vim.fn.environ()) do
+                    table.insert(variables, string.format("%s=%s", k, v))
+                end
+                return variables
+            end,
+            stopOnEntry = false
+        }
+    }
+
+    dap.adapters.netcoredbg = {
+        type = 'executable',
+        command = vim.fn.stdpath('data') .. '/dapinstall/dnetcs_dbg/netcoredbg/netcoredbg',
+        args = {'--interpreter=vscode'}
+    }
+
+    dap.configurations.cs = {
+        {
+            type = "netcoredbg",
+            name = "launch - netcoredbg",
+            request = "launch",
+            program = function()
+                return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+            end,
+        },
+    }
+
+    dap.adapters.javascript = {
+        type = 'executable',
+        command = 'node',
+        args = {vim.fn.stdpath('data') .. '/dapinstall/jsnode_dbg/vscode-node-debug2/out/src/nodeDebug.js'},
+    }
+
+    dap.configurations.javascript = {
+        {
+            type = 'javascript',
+            request = 'launch',
+            program = function()
+                return vim.fn.input("Path to executable: ",
+                    vim.fn.getcwd() .. '/', "file")
+            end,
+            cwd = "${workspaceFolder}",
+            sourceMaps = true,
+            protocol = 'inspector',
+            console = 'integratedTerminal',
+        },
+    }
+
+    dap.adapters.typescript = {
+        type = 'executable',
+        command = 'node',
+        args = {vim.fn.stdpath('data') .. '/dapinstall/jsnode_dbg/vscode-node-debug2/out/src/nodeDebug.js'},
+    }
+
+    dap.configurations.typescript = {
+        {
+            type = 'typescript',
+            request = 'launch',
+            program = function()
+                return vim.fn.input("Path to executable: ",
+                    vim.fn.getcwd() .. '/', "file")
+            end,
+            cwd = "${workspaceFolder}",
+            preLaunchTask = "tsc: build - tsconfig.json",
+            sourceMaps = true,
+            protocol = 'inspector',
+            console = 'integratedTerminal',
+            outFiles = {"${workspaceFolder}/out/**/*.js"}
+        },
+    }
+
+    require('dapui').setup()
+
+end
+
 
 return config

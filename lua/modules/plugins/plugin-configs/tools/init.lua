@@ -97,12 +97,11 @@ function config.whichkey()
         },
         d = {
             name = "+Debug",
-            b = {"<cmd>DebugToggleBreakpoint<cr>", "Toggle Breakpoint"},
-            c = {"<cmd>DebugContinue<cr>", "Continue"},
-            i = {"<cmd>DebugStepInto<cr>", "Step Into"},
-            o = {"<cmd>DebugStepOver<cr>", "Step Over"},
-            r = {"<cmd>DebugToggleRepl<cr>", "Toggle Repl"},
-            s = {"<cmd>DebugStart<cr>", "Start"}
+            b = {"<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Toggle Breakpoint"},
+            c = {"<cmd>lua require'dap'.continue()<CR>", "Continue"},
+            i = {"<cmd>lua require'dap'.step_into()<CR>", "Step Into"},
+            o = {"<cmd>lua require'dap'.step_over()", "Step over"},
+            O = {"<cmd>lua require'dap'.step_out()", "Step Out"},
         },
         D = {
             name = "+Database",
