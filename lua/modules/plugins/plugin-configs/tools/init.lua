@@ -65,10 +65,8 @@ function config.whichkey()
 
     vim.g.mapleader = ' '
     vim.api.nvim_set_keymap("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
-    vim.api.nvim_set_keymap("v", "<leader>;", ":Dashboard<CR>", {noremap = true, silent = true})
-    vim.api.nvim_set_keymap('n', '<leader>b', ':Telescope buffers<CR>', {noremap = true, silent = true})
-    vim.api.nvim_set_keymap('n', '<leader>p', ":lua require'telescope'.extensions.project.project{}<CR>",
-                            {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<C-f>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>', {noremap = true})
+    vim.api.nvim_set_keymap('n', '<C-b>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', {noremap = true})
 
     vim.api.nvim_buf_set_keymap(0, 'v', '<leader>ljav', '<Esc><Cmd>lua require("jdtls").extract_variable(true)<CR>', {noremap = true, silent = true})
     vim.api.nvim_buf_set_keymap(0, 'v', '<leader>ljam', '<Esc><Cmd>lua require("jdtls").extract_method(true)<CR>', {noremap = true, silent = true})
