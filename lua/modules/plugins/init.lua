@@ -56,7 +56,12 @@ modules['terrortylor/nvim-comment'] = {
     config = editor_config.comment
 }
 
-modules['sbdchd/neoformat'] = { cmd = 'Neoformat' }
+modules['sbdchd/neoformat'] = {
+    cmd = 'Neoformat',
+    config = function ()
+        vim.g.shfmt_opt = "-ci"
+    end
+}
 
 modules['windwp/nvim-autopairs'] = {
     after = 'nvim-treesitter',

@@ -65,6 +65,7 @@ function config.whichkey()
 
     vim.g.mapleader = ' '
     vim.api.nvim_set_keymap("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
+    vim.api.nvim_set_keymap("v", "<leader>lf", ":Neoformat<CR>", {noremap = true, silent = true})
     vim.api.nvim_set_keymap('n', '<C-f>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>', {noremap = true})
     vim.api.nvim_set_keymap('n', '<C-b>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', {noremap = true})
 
@@ -119,7 +120,7 @@ function config.whichkey()
         },
         l = {
             name = "+LSP",
-            f = {"<cmd>lua vim.lsp.buf.formatting()<cr>", "Format"},
+            f = {"<cmd>Neoformat<cr>", "Format File"},
             i = {"<cmd>LspInfo<cr>", "Info"},
             a = {
                 name = "+Code Action",
