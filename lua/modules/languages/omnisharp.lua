@@ -12,3 +12,20 @@ require'lspconfig'.omnisharp.setup {
     autostart = true;
     root_dir = require'lspconfig'.util.root_pattern("*.csproj", "*.sln");
 }
+
+require('dap').adapters.netcoredbg = {
+    type = 'executable',
+    command = vim.fn.stdpath('data') .. '/dapinstall/dnetcs_dbg/netcoredbg/netcoredbg',
+    args = {'--interpreter=vscode'}
+}
+
+require('dap').configurations.cs = {
+    {
+        type = "netcoredbg",
+        name = "launch - netcoredbg",
+        request = "launch",
+        program = function()
+            return vim.fn.input('Path to dll', vim.fn.getcwd() .. '/bin/Debug/', 'file')
+        end,
+    },
+}
