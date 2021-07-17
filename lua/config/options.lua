@@ -31,7 +31,7 @@ O.g({
     autoindent = true,
     smartindent = true,
     shiftround = true,
-    showmatch = true;
+    showmatch = true,
     ignorecase = true,
     smartcase = true,
     infercase = true,
@@ -74,14 +74,10 @@ O.g({
     winblend = 20
 })
 
-O.w({
-    number = true,
-    relativenumber = true,
-    cursorline = true,
-})
+O.w({number = true, relativenumber = true, cursorline = true})
 
 -- colorcolumn
-vim.cmd[[let &colorcolumn="80,".join(range(120,999),",")]]
+vim.cmd [[let &colorcolumn="80,".join(range(120,999),",")]]
 
 -- filetype
 -- vim.cmd[[filetype plugin indent on]]

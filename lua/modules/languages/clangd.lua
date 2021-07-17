@@ -2,7 +2,7 @@ local data_dir = vim.fn.stdpath('data')
 local lsp = require('modules.lsp')
 
 require'lspconfig'.clangd.setup {
-    cmd = { data_dir .. '/lspinstall/cpp/clangd/bin/clangd' },
+    cmd = {data_dir .. '/lspinstall/cpp/clangd/bin/clangd'},
     on_attach = lsp.enhance_attach
 }
 
@@ -19,7 +19,8 @@ require('dap').configurations.cpp = {
         request = "launch",
         name = "Launch",
         program = function()
-            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+            return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/",
+                                "file")
         end,
         args = {},
         cwd = "${workspaceFolder}",

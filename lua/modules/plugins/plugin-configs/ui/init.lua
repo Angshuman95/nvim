@@ -1,8 +1,7 @@
 local config = {}
 
-
 function config.color()
-    vim.g.nvcode_termcolors=256
+    vim.g.nvcode_termcolors = 256
     vim.cmd('colorscheme nvcode')
 end
 
@@ -20,18 +19,27 @@ function config.dashboard()
     }
     vim.g.dashboard_default_executive = 'telescope'
     vim.g.dashboard_custom_section = {
-        a = { description = { '  Projects           ' },
-                command = 'Telescope project' },
-        b = { description = { '  Find File          ' },
-                command = 'Telescope find_files' },
-        c = { description = { '  Recently Used Files' },
-                command = 'Telescope oldfiles' },
-        d = { description = { '  Load Last Session  ' },
-                command = 'SessionLoad' },
-        e = { description = { '  Find Word          ' },
-                command = 'Telescope live_grep' },
-        f = { description = { '  Settings           ' },
-                command = 'Telescope vim_options' }
+        a = {
+            description = {'  Projects           '},
+            command = 'Telescope project'
+        },
+        b = {
+            description = {'  Find File          '},
+            command = 'Telescope find_files'
+        },
+        c = {
+            description = {'  Recently Used Files'},
+            command = 'Telescope oldfiles'
+        },
+        d = {description = {'  Load Last Session  '}, command = 'SessionLoad'},
+        e = {
+            description = {'  Find Word          '},
+            command = 'Telescope live_grep'
+        },
+        f = {
+            description = {'  Settings           '},
+            command = 'Telescope vim_options'
+        }
     }
 end
 
@@ -59,7 +67,9 @@ function config.lualine()
     }
 
     local conditions = {
-        buffer_not_empty = function() return vim.fn.empty(vim.fn.expand('%:t')) ~= 1 end,
+        buffer_not_empty = function()
+            return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
+        end,
         hide_in_width = function() return vim.fn.winwidth(0) > 80 end,
         check_filetype = function()
             local tbl = {
@@ -89,59 +99,62 @@ function config.lualine()
             disabled_filetypes = {}
         },
         sections = {
-            lualine_a = { 'mode' },
-            lualine_b = { 'branch' },
+            lualine_a = {'mode'},
+            lualine_b = {'branch'},
             lualine_c = {
-                {
-                    'filename',
-                    condition = conditions.check_filetype
-                },
-                {
+                {'filename', condition = conditions.check_filetype}, {
                     -- filesize component
                     function()
                         local function format_file_size(file)
-                        local size = vim.fn.getfsize(file)
-                        if size <= 0 then return '' end
-                        local sufixes = {'b', 'k', 'm', 'g'}
-                        local i = 1
-                        while size > 1024 do
-                            size = size / 1024
-                            i = i + 1
-                        end
-                        return string.format('%.1f%s', size, sufixes[i])
+                            local size = vim.fn.getfsize(file)
+                            if size <= 0 then
+                                return ''
+                            end
+                            local sufixes = {'b', 'k', 'm', 'g'}
+                            local i = 1
+                            while size > 1024 do
+                                size = size / 1024
+                                i = i + 1
+                            end
+                            return string.format('%.1f%s', size, sufixes[i])
                         end
                         local file = vim.fn.expand('%:p')
-                        if string.len(file) == 0 then return '' end
+                        if string.len(file) == 0 then
+                            return ''
+                        end
                         return format_file_size(file)
                     end,
                     color = {fg = colors.grey},
                     condition = conditions.buffer_not_empty
-                },
-                {
+                }, {
                     'diff',
                     colored = true,
                     condition = conditions.hide_in_width,
-                    symbols = { added = '  ', modified = '  ', removed = '  ' },
+                    symbols = {
+                        added = '  ',
+                        modified = '  ',
+                        removed = '  '
+                    },
                     color_added = colors.green,
                     color_modified = colors.blue,
                     color_removed = colors.red
-                },
-                {
+                }, {
                     -- Put the next section in the middle
-                    function()
-                        return '%='
-                    end
-                },
-                {
+                    function() return '%=' end
+                }, {
                     -- Lsp server name .
                     function()
                         local msg = 'No Active Lsp'
-                        local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+                        local buf_ft = vim.api
+                                           .nvim_buf_get_option(0, 'filetype')
                         local clients = vim.lsp.get_active_clients()
-                        if next(clients) == nil then return msg end
+                        if next(clients) == nil then
+                            return msg
+                        end
                         for _, client in ipairs(clients) do
                             local filetypes = client.config.filetypes
-                            if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+                            if filetypes and vim.fn.index(filetypes, buf_ft) ~=
+                                -1 then
                                 return client.name
                             end
                         end
@@ -156,7 +169,12 @@ function config.lualine()
                 {
                     'diagnostics',
                     sources = {"nvim_lsp"},
-                    symbols = {error = '  ', warn = '  ', info = '  ', hint = '  '},
+                    symbols = {
+                        error = '  ',
+                        warn = '  ',
+                        info = '  ',
+                        hint = '  '
+                    },
                     color_error = colors.error_red,
                     color_warn = colors.orange,
                     color_hint = colors.info_yellow,
@@ -164,34 +182,23 @@ function config.lualine()
                 },
                 {
                     'encoding',
-                    color = { fg = colors.green },
+                    color = {fg = colors.green},
                     condition = conditions.hide_in_width
-                },
-                {
-                    'fileformat',
-                    condition = conditions.hide_in_width
-                }
+                }, {'fileformat', condition = conditions.hide_in_width}
             },
             lualine_y = {'filetype'},
-            lualine_z = {
-                'progress',
-                'location'
-            }
+            lualine_z = {'progress', 'location'}
         },
         inactive_sections = {
             lualine_a = {},
             lualine_b = {},
-            lualine_c = {
-                'filename',
-                condition = conditions.buffer_not_empty,
-            },
+            lualine_c = {'filename', condition = conditions.buffer_not_empty},
             lualine_x = {'location'},
             lualine_y = {},
             lualine_z = {}
-        },
+        }
     }
 end
-
 
 function config.indent_blankline()
     vim.g.indent_blankline_char = "▏"
@@ -211,7 +218,6 @@ function config.indent_blankline()
     }
     vim.cmd("autocmd CursorMoved * IndentBlanklineRefresh")
 end
-
 
 function config.tree()
     vim.g.nvim_tree_disable_netrw = 0
@@ -249,7 +255,6 @@ function config.tree()
         }
     }
 end
-
 
 function config.floaterm()
     vim.g.floaterm_keymap_toggle = "<F1>"

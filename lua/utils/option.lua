@@ -1,10 +1,6 @@
-local Type = {
-    GLOBAL_OPTION = 'o',
-    WINDOW_OPTION = 'wo',
-    BUFFER_OPTION = 'bo',
-}
+local Type = {GLOBAL_OPTION = 'o', WINDOW_OPTION = 'wo', BUFFER_OPTION = 'bo'}
 
-local add_options = function (option_type, id, options)
+local add_options = function(option_type, id, options)
     if type(options) ~= 'table' then
         error('Option must be tables ' .. option_type)
         return
@@ -21,9 +17,7 @@ end
 
 local Options = {}
 
-Options.g = function (options)
-    add_options(Type.GLOBAL_OPTION, 0, options)
-end
+Options.g = function(options) add_options(Type.GLOBAL_OPTION, 0, options) end
 
 Options.w = function(options, id)
     if id == nil then id = 0 end

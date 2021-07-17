@@ -1,9 +1,8 @@
 local config = {}
 
-
 function config.compe()
     vim.o.completeopt = "menuone,noselect"
-    require "compe".setup {
+    require"compe".setup {
         enabled = true,
         autocomplete = true,
         debug = false,
@@ -67,13 +66,14 @@ function config.compe()
     end
     vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", {expr = true})
     vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", {expr = true})
-    vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
-    vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", {expr = true})
+    vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()",
+                            {expr = true})
+    vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()",
+                            {expr = true})
 end
 
-
 function config.telescope()
-    if not packer_plugins['plenary.nvim'].loaded or 
+    if not packer_plugins['plenary.nvim'].loaded or
         not packer_plugins['popup.nvim'].loaded then
         vim.cmd [[packadd plenary.nvim]]
         vim.cmd [[packadd popup.nvim]]
@@ -83,19 +83,19 @@ function config.telescope()
     require('telescope').setup {
         defaults = {
             prompt_prefix = '🔭 ',
-            layout_config = {
-                prompt_position = 'top'
-            },
+            layout_config = {prompt_position = 'top'},
             selection_caret = " ",
             sorting_strategy = 'ascending',
             file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
-            grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
-            qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+            grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep
+                .new,
+            qflist_previewer = require'telescope.previewers'.vim_buffer_qflist
+                .new
         },
         extensions = {
             fzy_native = {
                 override_generic_sorter = false,
-                override_file_sorter = true,
+                override_file_sorter = true
             }
         }
     }
@@ -105,41 +105,34 @@ function config.telescope()
 
 end
 
-
 function config.lspkind()
-    require("lspkind").init(
-        {
-            with_text = true,
-            symbol_map = {
-                Text = "",
-                Method = "ƒ",
-                Function = "",
-                Constructor = "",
-                Variable = "",
-                Class = "",
-                Interface = "ﰮ",
-                Module = "",
-                Property = "",
-                Unit = "",
-                Value = "",
-                Enum = "了",
-                Keyword = "",
-                Snippet = "﬌",
-                Color = "",
-                File = "",
-                Folder = "",
-                EnumMember = "",
-                Constant = "",
-                Struct = ""
-            }
+    require("lspkind").init({
+        with_text = true,
+        symbol_map = {
+            Text = "",
+            Method = "ƒ",
+            Function = "",
+            Constructor = "",
+            Variable = "",
+            Class = "",
+            Interface = "ﰮ",
+            Module = "",
+            Property = "",
+            Unit = "",
+            Value = "",
+            Enum = "了",
+            Keyword = "",
+            Snippet = "﬌",
+            Color = "",
+            File = "",
+            Folder = "",
+            EnumMember = "",
+            Constant = "",
+            Struct = ""
         }
-    )
+    })
 end
 
-
-function config.emmet()
-    vim.g.user_emmet_mode = "inv"
-end
-
+function config.emmet() vim.g.user_emmet_mode = "inv" end
 
 return config

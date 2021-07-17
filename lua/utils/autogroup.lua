@@ -1,6 +1,6 @@
 local A = {}
 
-A.augroups = function (definitions)
+A.augroups = function(definitions)
     for group_name, definition in pairs(definitions) do
         vim.api.nvim_command('augroup ' .. group_name)
         vim.api.nvim_command('autocmd!')

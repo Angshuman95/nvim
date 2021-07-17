@@ -1,10 +1,6 @@
 local config = {}
 
-
-function config.comment()
-    require("nvim_comment").setup()
-end
-
+function config.comment() require("nvim_comment").setup() end
 
 function config.autopairs()
     if not packer_plugins["nvim-treesitter"].loaded then
@@ -77,10 +73,11 @@ function config.autopairs()
 
     vim.api.nvim_set_keymap("i", "<CR>", "v:lua.MUtils.completion_confirm()",
                             {expr = true, noremap = true})
-    vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.MUtils.tab()", {expr = true, noremap = true})
-    vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.MUtils.s_tab()", {expr = true, noremap = true})
+    vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.MUtils.tab()",
+                            {expr = true, noremap = true})
+    vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.MUtils.s_tab()",
+                            {expr = true, noremap = true})
 end
-
 
 function config.gitsigns()
     if not packer_plugins["plenary.nvim"].loaded then
@@ -135,10 +132,9 @@ function config.gitsigns()
     }
 end
 
-
 function config.diffview()
-    local cb = require "diffview.config".diffview_callback
-    require "diffview".setup {
+    local cb = require"diffview.config".diffview_callback
+    require"diffview".setup {
         diff_binaries = false,
         file_panel = {width = 35, use_icons = true},
         key_bindings = {
@@ -170,10 +166,6 @@ function config.diffview()
     }
 end
 
-
-function config.blame()
-    vim.g.gitblame_enabled = 0
-end
-
+function config.blame() vim.g.gitblame_enabled = 0 end
 
 return config

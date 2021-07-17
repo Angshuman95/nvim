@@ -1,6 +1,6 @@
 local C = {}
 
-C.commands = function (commands)
+C.commands = function(commands)
     for name, c in pairs(commands) do
         local command
         if c.buffer then

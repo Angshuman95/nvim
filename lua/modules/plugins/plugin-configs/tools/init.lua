@@ -1,22 +1,17 @@
 local config = {}
 
-
 function config.colorize()
-    require "colorizer".setup(
-        {"*"},
-        {
-            RGB = true,
-            RRGGBB = true,
-            RRGGBBAA = true,
-            names = true,
-            rgb_fn = true,
-            hsl_fn = true,
-            css = true,
-            css_fn = true
-        }
-    )
+    require"colorizer".setup({"*"}, {
+        RGB = true,
+        RRGGBB = true,
+        RRGGBBAA = true,
+        names = true,
+        rgb_fn = true,
+        hsl_fn = true,
+        css = true,
+        css_fn = true
+    })
 end
-
 
 function config.whichkey()
     require("which-key").setup {
@@ -34,11 +29,7 @@ function config.whichkey()
                 g = true
             }
         },
-        icons = {
-            breadcrumb = "»",
-            separator = "➜",
-            group = "+"
-        },
+        icons = {breadcrumb = "»", separator = "➜", group = "+"},
         window = {
             border = "single",
             position = "bottom",
@@ -50,7 +41,9 @@ function config.whichkey()
             width = {min = 20, max = 50},
             spacing = 3
         },
-        hidden = {"<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "},
+        hidden = {
+            "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "
+        },
         show_help = true
     }
 
@@ -64,13 +57,23 @@ function config.whichkey()
     }
 
     vim.g.mapleader = ' '
-    vim.api.nvim_set_keymap("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
-    vim.api.nvim_set_keymap("v", "<leader>lf", ":Neoformat<CR>", {noremap = true, silent = true})
-    vim.api.nvim_set_keymap('n', '<C-f>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>', {noremap = true})
-    vim.api.nvim_set_keymap('n', '<C-b>', '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>', {noremap = true})
+    vim.api.nvim_set_keymap("v", "<leader>/", ":CommentToggle<CR>",
+                            {noremap = true, silent = true})
+    vim.api.nvim_set_keymap("v", "<leader>lf", ":Neoformat<CR>",
+                            {noremap = true, silent = true})
+    vim.api.nvim_set_keymap('n', '<C-f>',
+                            '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>',
+                            {noremap = true})
+    vim.api.nvim_set_keymap('n', '<C-b>',
+                            '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>',
+                            {noremap = true})
 
-    vim.api.nvim_buf_set_keymap(0, 'v', '<leader>ljav', '<Esc><Cmd>lua require("jdtls").extract_variable(true)<CR>', {noremap = true, silent = true})
-    vim.api.nvim_buf_set_keymap(0, 'v', '<leader>ljam', '<Esc><Cmd>lua require("jdtls").extract_method(true)<CR>', {noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(0, 'v', '<leader>ljav',
+                                '<Esc><Cmd>lua require("jdtls").extract_variable(true)<CR>',
+                                {noremap = true, silent = true})
+    vim.api.nvim_buf_set_keymap(0, 'v', '<leader>ljam',
+                                '<Esc><Cmd>lua require("jdtls").extract_method(true)<CR>',
+                                {noremap = true, silent = true})
 
     local mappings = {
         [';'] = {"<cmd>Dashboard<CR>", "Dashboard"},
@@ -80,19 +83,32 @@ function config.whichkey()
         ["f"] = {"<cmd>Telescope find_files<CR>", "Find Files"},
         ["h"] = {"<cmd>set hlsearch!<CR>", "No Highlight"},
         ["m"] = {"<cmd>MaximizerToggle<CR>", "Maximize"},
-        ["p"] = {"<cmd>lua require'telescope'.extensions.project.project{}<CR>", "Projects"},
+        ["p"] = {
+            "<cmd>lua require'telescope'.extensions.project.project{}<CR>",
+            "Projects"
+        },
         ["."] = {
             name = "+Virtual Text",
-            s = {"<cmd>lua require('modules.lsp.virtualtext').show()<CR>", "Show"},
-            h = {"<cmd>lua require('modules.lsp.virtualtext').hide()<CR>", "Hide"}
+            s = {
+                "<cmd>lua require('modules.lsp.virtualtext').show()<CR>", "Show"
+            },
+            h = {
+                "<cmd>lua require('modules.lsp.virtualtext').hide()<CR>", "Hide"
+            }
         },
         d = {
             name = "+Debug",
-            b = {"<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Toggle Breakpoint <A-b>"},
-            c = {"<cmd>lua require'dap'.continue()<CR>", "Continue or Start <A-h>"},
+            b = {
+                "<cmd>lua require'dap'.toggle_breakpoint()<CR>",
+                "Toggle Breakpoint <A-b>"
+            },
+            c = {
+                "<cmd>lua require'dap'.continue()<CR>",
+                "Continue or Start <A-h>"
+            },
             i = {"<cmd>lua require'dap'.step_into()<CR>", "Step Into <A-j>"},
             o = {"<cmd>lua require'dap'.step_over()<CR>", "Step over <A-l>"},
-            O = {"<cmd>lua require'dap'.step_out()<CR>", "Step Out <A-k>"},
+            O = {"<cmd>lua require'dap'.step_out()<CR>", "Step Out <A-k>"}
         },
         D = {
             name = "+Database",
@@ -116,7 +132,10 @@ function config.whichkey()
             f = {"<cmd>Telescope git_status<cr>", "Search changed files"},
             b = {"<cmd>Telescope git_branches<cr>", "Search branchs"},
             c = {"<cmd>Telescope git_commits<cr>", "Search commits"},
-            C = {"<cmd>Telescope git_bcommits<cr>", "Search commits(for current file)"},
+            C = {
+                "<cmd>Telescope git_bcommits<cr>",
+                "Search commits(for current file)"
+            }
         },
         l = {
             name = "+LSP",
@@ -124,24 +143,53 @@ function config.whichkey()
             i = {"<cmd>LspInfo<cr>", "Info"},
             a = {
                 name = "+Code Action",
-                l = {"<cmd>lua vim.lsp.buf.code_action()<cr>", "Line Code Action"},
-                r = {"<cmd>lua vim.lsp.buf.range_code_action()<cr>", "Range Code Action"}
+                l = {
+                    "<cmd>lua vim.lsp.buf.code_action()<cr>", "Line Code Action"
+                },
+                r = {
+                    "<cmd>lua vim.lsp.buf.range_code_action()<cr>",
+                    "Range Code Action"
+                }
             },
             g = {
                 name = "+Go To",
-                d = {"<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition <A-d>"},
-                D = {"<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration <A-D>"},
-                i = {"<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation <A-i>"},
-                r = {"<cmd>lua vim.lsp.buf.references()<CR>", "References <A-r>"},
-                s = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help"}
+                d = {
+                    "<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition <A-d>"
+                },
+                D = {
+                    "<Cmd>lua vim.lsp.buf.declaration()<CR>",
+                    "Declaration <A-D>"
+                },
+                i = {
+                    "<cmd>lua vim.lsp.buf.implementation()<CR>",
+                    "Implementation <A-i>"
+                },
+                r = {
+                    "<cmd>lua vim.lsp.buf.references()<CR>", "References <A-r>"
+                },
+                s = {
+                    "<cmd>lua vim.lsp.buf.signature_help()<CR>",
+                    "Signature Help"
+                }
             },
             d = {
                 name = "+Diagnostics",
-                l = {"<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",
-                    "Line Diagnostics"},
-                f = {"<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>", "File Diagnostics"},
-                ["["] = {"<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>", "Next Diagnostic"},
-                ["]"] = {"<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", "Previous Diagnostic"},
+                l = {
+                    "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<CR>",
+                    "Line Diagnostics"
+                },
+                f = {
+                    "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>",
+                    "File Diagnostics"
+                },
+                ["["] = {
+                    "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>",
+                    "Next Diagnostic"
+                },
+                ["]"] = {
+                    "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>",
+                    "Previous Diagnostic"
+                }
             },
             j = {
                 name = "+Java - jdtls",
@@ -150,9 +198,18 @@ function config.whichkey()
                     v = 'Variable',
                     m = 'method'
                 },
-                i = {"<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports"},
-                v = {"<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable"},
-                R = {"<Cmd>lua require('jdtls').code_action(false, 'refactor')<CR>", "Refactor"}
+                i = {
+                    "<Cmd>lua require'jdtls'.organize_imports()<CR>",
+                    "Organize Imports"
+                },
+                v = {
+                    "<Cmd>lua require('jdtls').extract_variable()<CR>",
+                    "Extract Variable"
+                },
+                R = {
+                    "<Cmd>lua require('jdtls').code_action(false, 'refactor')<CR>",
+                    "Refactor"
+                }
             },
             p = {
                 name = "+Preview",
@@ -166,22 +223,37 @@ function config.whichkey()
         },
         r = {
             name = "+Rename",
-            f = {"<cmd>lua require('spectre').open_file_search()<cr>", "Current File"},
+            f = {
+                "<cmd>lua require('spectre').open_file_search()<cr>",
+                "Current File"
+            },
             p = {"<cmd>lua require('spectre').open()<cr>", "Project"}
         },
         s = {
             name = "+Search",
             c = {"<cmd>Telescope colorscheme<cr>", "Colorscheme"},
-            d = {"<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics"},
-            D = {"<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics"},
-            f = {"<cmd>Telescope current_buffer_fuzzy_find<cr>", "Fuzzy Find (Current File)"},
+            d = {
+                "<cmd>Telescope lsp_document_diagnostics<cr>",
+                "Document Diagnostics"
+            },
+            D = {
+                "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+                "Workspace Diagnostics"
+            },
+            f = {
+                "<cmd>Telescope current_buffer_fuzzy_find<cr>",
+                "Fuzzy Find (Current File)"
+            },
             m = {"<cmd>Telescope marks<cr>", "Marks"},
             M = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
             r = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
             R = {"<cmd>Telescope registers<cr>", "Registers"},
             t = {"<cmd>Telescope live_grep<cr>", "Text"},
             s = {"<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols"},
-            S = {"<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols"}
+            S = {
+                "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+                "Workspace Symbols"
+            }
         },
         S = {
             name = "+Session",
@@ -199,17 +271,16 @@ function config.whichkey()
     wk.register(mappings, opts)
 end
 
-
 local function load_env_file()
-    local env_file = os.getenv("HOME")..'/.env'
+    local env_file = os.getenv("HOME") .. '/.env'
     local env_contents = {}
     if vim.fn.filereadable(env_file) ~= 1 then
         print('.env file does not exist')
         return
     end
     local contents = vim.fn.readfile(env_file)
-    for _,item in pairs(contents) do
-        local line_content = vim.fn.split(item,"=")
+    for _, item in pairs(contents) do
+        local line_content = vim.fn.split(item, "=")
         env_contents[line_content[1]] = line_content[2]
     end
     return env_contents
@@ -218,9 +289,9 @@ end
 local function load_dbs()
     local env_contents = load_env_file()
     local dbs = {}
-    for key,value in pairs(env_contents) do
-        if vim.fn.stridx(key,"DB_CONNECTION_") >= 0 then
-            local db_name = vim.fn.split(key,"_")[3]:lower()
+    for key, value in pairs(env_contents) do
+        if vim.fn.stridx(key, "DB_CONNECTION_") >= 0 then
+            local db_name = vim.fn.split(key, "_")[3]:lower()
             dbs[db_name] = value
         end
     end
@@ -240,11 +311,7 @@ function config.vim_dadbod_ui()
     vim.g.dbs = load_dbs()
 end
 
-
-function config.tmux()
-    vim.g.tmux_navigator_save_on_switch = 2
-end
-
+function config.tmux() vim.g.tmux_navigator_save_on_switch = 2 end
 
 function config.spectre()
     if not packer_plugins['plenary.nvim'].loaded or
@@ -307,7 +374,7 @@ function config.spectre()
                 map = "th",
                 cmd = "<cmd>lua require('spectre').change_options('hidden')<CR>",
                 desc = "toggle search hidden"
-            },
+            }
         },
         find_engine = {
             -- rg is map with finder_cmd
@@ -376,6 +443,5 @@ function config.spectre()
         is_insert_mode = false -- start open panel on is_insert_mode
     })
 end
-
 
 return config

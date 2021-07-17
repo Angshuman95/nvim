@@ -16,8 +16,7 @@ function Packer:load_plugins()
     local modules = require('modules.plugins')
     for repo, conf in pairs(modules) do
         if conf ~= false then
-            self.repos[ #self.repos + 1 ] = vim.tbl_extend(
-                'force', { repo }, conf)
+            self.repos[#self.repos + 1] = vim.tbl_extend('force', {repo}, conf)
         end
     end
 end
@@ -30,7 +29,7 @@ function Packer:load_packer()
 
     packer.init({
         compile_path = packer_compiled,
-        git = { clone_timeout = 120 },
+        git = {clone_timeout = 120},
         disable_commands = true
     })
 
@@ -40,11 +39,9 @@ function Packer:load_packer()
 
     self:load_plugins()
 
-    use { 'wbthomason/packer.nvim', opt = true }
+    use {'wbthomason/packer.nvim', opt = true}
 
-    for _, repo in ipairs(self.repos) do
-        use(repo)
-    end
+    for _, repo in ipairs(self.repos) do use(repo) end
 end
 
 function Packer:init_ensure_plugins()
@@ -52,12 +49,12 @@ function Packer:init_ensure_plugins()
 
     local state = uv.fs_stat(packer_dir)
     if not state then
-        local cmd = '!git clone https://github.com/wbthomason/packer.nvim ' .. packer_dir
+        local cmd = '!git clone https://github.com/wbthomason/packer.nvim ' ..
+                        packer_dir
         api.nvim_command(cmd)
 
-        uv.fs_mkdir(data_dir .. 'lua', 511, function()
-            assert('make compile path dir failed')
-        end)
+        uv.fs_mkdir(data_dir .. 'lua', 511,
+                    function() assert('make compile path dir failed') end)
 
         self:load_packer()
     end
@@ -65,30 +62,24 @@ end
 
 local plugins = setmetatable({}, {
     __index = function(_, key)
-        if not packer then
-            Packer:load_packer()
-        end
+        if not packer then Packer:load_packer() end
         return packer[key]
     end
 })
 
 -- Script Entry point
-function plugins.ensure_plugins()
-    Packer:init_ensure_plugins()
-end
+function plugins.ensure_plugins() Packer:init_ensure_plugins() end
 
 function plugins.convert_compile_file()
     local lines = {}
     local lnum = 1
-    lines[#lines+1] = 'vim.cmd [[packadd packer.nvim]]\n'
+    lines[#lines + 1] = 'vim.cmd [[packadd packer.nvim]]\n'
 
     for line in io.lines(packer_compiled) do
         lnum = lnum + 1
         if lnum > 15 then
-            lines[#lines+1] = line .. '\n'
-            if line == 'END' then
-                break
-            end
+            lines[#lines + 1] = line .. '\n'
+            if line == 'END' then break end
         end
     end
     table.remove(lines, #lines)
@@ -97,14 +88,10 @@ function plugins.convert_compile_file()
         os.execute('mkdir -p ' .. data_dir .. 'lua')
     end
 
-    if fn.filereadable(compile_to_lua) == 1 then
-        os.remove(compile_to_lua)
-    end
+    if fn.filereadable(compile_to_lua) == 1 then os.remove(compile_to_lua) end
 
     local file = io.open(compile_to_lua, "w")
-    for _, line in ipairs(lines) do
-        file:write(line)
-    end
+    for _, line in ipairs(lines) do file:write(line) end
     file.close()
 
     os.remove(packer_compiled)
@@ -120,7 +107,7 @@ function plugins.load_compile()
         require('_compiled')
     else
         assert('Missing packer compile file - Run PackerCompile or ' ..
-        'PackerInstall to fix')
+                   'PackerInstall to fix')
     end
 
     vim.cmd [[command! PackerCompile lua require('main.pack').magic_compile()]]

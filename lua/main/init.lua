@@ -1,13 +1,11 @@
 local global = require('main.global')
 
 -- Create cache dir (if deleted)
-local createdir = function ()
+local createdir = function()
     local data_dir = {
-        global.cache_dir .. 'backup',
-        global.cache_dir .. 'session',
-        global.cache_dir .. 'swap',
-        global.cache_dir .. 'tags',
-        global.cache_dir .. 'undo',
+        global.cache_dir .. 'backup', global.cache_dir .. 'session',
+        global.cache_dir .. 'swap', global.cache_dir .. 'tags',
+        global.cache_dir .. 'undo'
     }
 
     -- Check if cache dir exists
@@ -15,7 +13,7 @@ local createdir = function ()
         os.execute('mkdir -p' .. global.cache_dir)
 
         -- Create sub dirs
-        for _,v in pairs(data_dir) do
+        for _, v in pairs(data_dir) do
             if vim.fn.isdirectory(v) == 0 then
                 os.execute('mkdir -p' .. v)
             end
@@ -26,10 +24,10 @@ local createdir = function ()
 end
 
 -- set <Space> as mapleader
-local leader_map = function ()
+local leader_map = function()
     vim.g.mapleader = " "
-    vim.api.nvim_set_keymap('n', ' ', '', { noremap = true })
-    vim.api.nvim_set_keymap('x', ' ', '', { noremap = true })
+    vim.api.nvim_set_keymap('n', ' ', '', {noremap = true})
+    vim.api.nvim_set_keymap('x', ' ', '', {noremap = true})
 end
 
 local load_nvim = function()
