@@ -64,12 +64,6 @@ function config.whichkey()
     }
 
     vim.g.mapleader = ' '
-    vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', {noremap = true, silent = true})
-    vim.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', {noremap = true, silent = true})
-    vim.api.nvim_set_keymap('n', '<Leader>m', ':MaximizerToggle<CR>', {noremap = true, silent = true})
-    vim.api.nvim_set_keymap('n', '<Leader>f', ':Telescope find_files<CR>', {noremap = true, silent = true})
-    vim.api.nvim_set_keymap('n', '<Leader>;', ':Dashboard<CR>', {noremap = true, silent = true})
-    vim.api.nvim_set_keymap("n", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
     vim.api.nvim_set_keymap("v", "<leader>/", ":CommentToggle<CR>", {noremap = true, silent = true})
     vim.api.nvim_set_keymap("v", "<leader>;", ":Dashboard<CR>", {noremap = true, silent = true})
     vim.api.nvim_set_keymap('n', '<leader>b', ':Telescope buffers<CR>', {noremap = true, silent = true})
@@ -80,14 +74,14 @@ function config.whichkey()
     vim.api.nvim_buf_set_keymap(0, 'v', '<leader>ljam', '<Esc><Cmd>lua require("jdtls").extract_method(true)<CR>', {noremap = true, silent = true})
 
     local mappings = {
-        [';'] = "Dashboard",
-        ["/"] = "Comment",
-        ["b"] = "Buffers",
-        ["e"] = "Explorer",
-        ["f"] = "Find File",
-        ["h"] = "No Highlight",
-        ["m"] = "Maximize",
-        ["p"] = "Projects",
+        [';'] = {"<cmd>Dashboard<CR>", "Dashboard"},
+        ["/"] = {"<cmd>CommentToggle<CR>", "Comment"},
+        ["b"] = {"<cmd>Telescope buffers<CR>", "Buffers"},
+        ["e"] = {"<cmd>NvimTreeToggle<CR>", "Explorer"},
+        ["f"] = {"<cmd>Telescope find_files<CR>", "Find Files"},
+        ["h"] = {"<cmd>set hlsearch!<CR>", "No Highlight"},
+        ["m"] = {"<cmd>MaximizerToggle<CR>", "Maximize"},
+        ["p"] = {"<cmd>lua require'telescope'.extensions.project.project{}<CR>", "Projects"},
         ["."] = {
             name = "+Virtual Text",
             s = {"<cmd>lua require('modules.lsp.virtualtext').show()<CR>", "Show"},
@@ -95,11 +89,11 @@ function config.whichkey()
         },
         d = {
             name = "+Debug",
-            b = {"<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Toggle Breakpoint"},
-            c = {"<cmd>lua require'dap'.continue()<CR>", "Continue"},
-            i = {"<cmd>lua require'dap'.step_into()<CR>", "Step Into"},
-            o = {"<cmd>lua require'dap'.step_over()", "Step over"},
-            O = {"<cmd>lua require'dap'.step_out()", "Step Out"},
+            b = {"<cmd>lua require'dap'.toggle_breakpoint()<CR>", "Toggle Breakpoint <A-b>"},
+            c = {"<cmd>lua require'dap'.continue()<CR>", "Continue or Start <A-h>"},
+            i = {"<cmd>lua require'dap'.step_into()<CR>", "Step Into <A-j>"},
+            o = {"<cmd>lua require'dap'.step_over()<CR>", "Step over <A-l>"},
+            O = {"<cmd>lua require'dap'.step_out()<CR>", "Step Out <A-k>"},
         },
         D = {
             name = "+Database",
@@ -136,10 +130,10 @@ function config.whichkey()
             },
             g = {
                 name = "+Go To",
-                d = {"<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition"},
-                D = {"<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration"},
-                i = {"<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation"},
-                r = {"<cmd>lua vim.lsp.buf.references()<CR>", "References"},
+                d = {"<Cmd>lua vim.lsp.buf.definition()<CR>", "Definition <A-d>"},
+                D = {"<Cmd>lua vim.lsp.buf.declaration()<CR>", "Declaration <A-D>"},
+                i = {"<cmd>lua vim.lsp.buf.implementation()<CR>", "Implementation <A-i>"},
+                r = {"<cmd>lua vim.lsp.buf.references()<CR>", "References <A-r>"},
                 s = {"<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signature Help"}
             },
             d = {
@@ -163,7 +157,7 @@ function config.whichkey()
             },
             p = {
                 name = "+Preview",
-                d = {"<cmd>Lspsaga preview_definition<CR>", "Definition"}
+                d = {"<cmd>Lspsaga preview_definition<CR>", "Definition <A-p>"}
             },
             q = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
             r = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Rename"},

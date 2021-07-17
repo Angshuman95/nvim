@@ -22,6 +22,12 @@ function L.enhance_attach(client, bufnr)
     local opts = { noremap=true, silent=true }
 
     buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+    buf_set_keymap('n', '<A-d>', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    buf_set_keymap('n', '<A-D>', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
+    buf_set_keymap('n', '<A-i>', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
+    buf_set_keymap('n', '<A-r>', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
+    buf_set_keymap('n', '<A-p>', '<cmd>Lspsaga preview_definition<CR>', opts)
+
 end
 
 return L
