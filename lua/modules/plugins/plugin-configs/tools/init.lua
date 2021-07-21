@@ -83,10 +83,7 @@ function config.whichkey()
         ["f"] = {"<cmd>Telescope find_files<CR>", "Find Files"},
         ["h"] = {"<cmd>set hlsearch!<CR>", "No Highlight"},
         ["m"] = {"<cmd>MaximizerToggle<CR>", "Maximize"},
-        ["p"] = {
-            "<cmd>lua require'telescope'.extensions.project.project{}<CR>",
-            "Projects"
-        },
+        ["p"] = {"<cmd>Telescope project<CR>", "Projects"},
         ["."] = {
             name = "+Virtual Text",
             s = {
