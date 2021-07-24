@@ -37,8 +37,6 @@ modules['kyazdani42/nvim-tree.lua'] = {
     requires = 'kyazdani42/nvim-web-devicons'
 }
 
-modules['vifm/vifm.vim'] = {cmd = 'Vifm'}
-
 modules['voldikss/vim-floaterm'] = {config = ui_config.floaterm}
 
 -- ======================================================================>
