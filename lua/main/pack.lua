@@ -116,7 +116,7 @@ function plugins.load_compile()
     vim.cmd [[command! PackerSync lua require('main.pack').sync()]]
     vim.cmd [[command! PackerClean lua require('main.pack').clean()]]
     vim.cmd [[autocmd User PackerComplete lua require('main.pack').magic_compile()]]
-    vim.cmd [[command! PackerStatus lua require('packer').status()]]
+    vim.cmd [[command! PackerStatus lua require('main.pack').status()]]
 end
 
 return plugins
