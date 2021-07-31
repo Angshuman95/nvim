@@ -14,7 +14,10 @@ function config.lspsaga()
         vim.cmd [[packadd lspsaga.nvim]]
     end
 
-    require("lspsaga").init_lsp_saga()
+    require("lspsaga").init_lsp_saga {
+        use_saga_diagnostic_sign = false,
+        code_action_icon = ''
+    }
 end
 
 function config.jdtls()
