@@ -10,7 +10,11 @@ local ui_config = require('modules.plugins.plugin-configs.ui')
 --     config = ui_config.color
 -- }
 
-modules['christianchiarulli/nvcode-color-schemes.vim'] = {
+-- modules['christianchiarulli/nvcode-color-schemes.vim'] = {
+--     config = ui_config.color
+-- }
+
+modules['Mofiqul/vscode.nvim'] = {
     config = ui_config.color
 }
 
