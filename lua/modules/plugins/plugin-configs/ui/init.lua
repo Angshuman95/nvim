@@ -2,12 +2,12 @@ local config = {}
 
 function config.color()
     -- NVCode
-    -- vim.g.nvcode_termcolors = 256
-    -- vim.cmd('colorscheme nvcode')
+    vim.g.nvcode_termcolors = 256
+    vim.cmd('colorscheme nvcode')
 
     -- VSCode
-    vim.g.vscode_style = 'dark'
-    vim.cmd('colorscheme vscode')
+    -- vim.g.vscode_style = 'dark'
+    -- vim.cmd('colorscheme vscode')
 end
 
 
@@ -97,8 +97,8 @@ function config.lualine()
     require('lualine').setup {
         options = {
             icons_enabled = true,
-            -- theme = 'onedark',
-            theme = 'vscode',
+            theme = 'onedark',
+            -- theme = 'vscode',
             section_separators = {'', ''},
             -- component_separators = {'', ''},
             component_separators = "",
