@@ -31,7 +31,6 @@ modules['hoob3rt/lualine.nvim'] = {
 
 modules['lukas-reineke/indent-blankline.nvim'] = {
     event = 'BufRead',
-    branch = 'lua',
     config = ui_config.indent_blankline
 }
 
