@@ -82,6 +82,7 @@ function config.lualine()
                 ["dashboard"] = true,
                 ["packer"] = true,
                 ["spectre_panel"] = true,
+                ["Outline"] = true,
                 [" "] = true
             }
             if tbl[vim.bo.filetype] then return false end
