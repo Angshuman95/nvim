@@ -124,6 +124,9 @@ function config.gitsigns()
             noremap = true,
             buffer = true
         },
+        current_line_blame = false,
+        current_line_blame_delay = 500,
+        current_line_blame_position = 'eol',
         watch_index = {interval = 1000},
         sign_priority = 6,
         update_debounce = 200,

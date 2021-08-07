@@ -81,11 +81,6 @@ modules['sindrets/diffview.nvim'] = {
     config = editor_config.diffview
 }
 
-modules['f-person/git-blame.nvim'] = {
-    cmd = 'GitBlameToggle',
-    config = editor_config.blame
-}
-
 -- ======================================================================>
 -- Language Modules
 -- ======================================================================>
