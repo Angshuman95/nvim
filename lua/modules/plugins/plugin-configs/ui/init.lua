@@ -78,12 +78,9 @@ function config.lualine()
         hide_in_width = function() return vim.fn.winwidth(0) > 80 end,
         check_filetype = function()
             local tbl = {
-                ["NvimTree"] = true,
-                ["dashboard"] = true,
-                ["packer"] = true,
-                ["spectre_panel"] = true,
-                ["Outline"] = true,
-                [" "] = true
+                ["NvimTree"] = true, ["dashboard"] = true, ["packer"] = true,
+                ["spectre_panel"] = true, ["Outline"] = true, ["fugitive"] = true,
+                ["gitcommit"] = true, [" "] = true
             }
             if tbl[vim.bo.filetype] then return false end
             return true
