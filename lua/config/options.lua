@@ -52,7 +52,7 @@ O.g({
     completeopt = 'menuone,noselect',
     jumpoptions = 'stack',
     showmode = false,
-    shortmess = 'a',
+    shortmess = 'aoOTIcF',
     foldlevelstart = 99,
     ruler = true,
     list = true,
