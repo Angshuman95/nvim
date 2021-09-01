@@ -10,7 +10,6 @@ function config.color()
     -- vim.cmd('colorscheme vscode')
 end
 
-
 function config.dashboard()
     vim.g.dashboard_custom_header = {
         '                                                       ',
@@ -36,7 +35,10 @@ function config.dashboard()
             description = {'  Recently Used Files'},
             command = 'Telescope oldfiles'
         },
-        d = {description = {'  Load Last Session  '}, command = 'SessionLoad'},
+        d = {
+            description = {'  Load Last Session  '},
+            command = 'SessionLoad'
+        },
         e = {
             description = {'  Find Word          '},
             command = 'Telescope live_grep'
@@ -47,7 +49,6 @@ function config.dashboard()
         }
     }
 end
-
 
 function config.lualine()
     local colors = {
@@ -75,12 +76,17 @@ function config.lualine()
         buffer_not_empty = function()
             return vim.fn.empty(vim.fn.expand('%:t')) ~= 1
         end,
-        hide_in_width = function() return vim.fn.winwidth(0) > 80 end,
+        hide_in_width = function() return vim.fn.winwidth(0) > 120 end,
         check_filetype = function()
             local tbl = {
-                ["NvimTree"] = true, ["dashboard"] = true, ["packer"] = true,
-                ["spectre_panel"] = true, ["Outline"] = true, ["fugitive"] = true,
-                ["gitcommit"] = true, [" "] = true
+                ["NvimTree"] = true,
+                ["dashboard"] = true,
+                ["packer"] = true,
+                ["spectre_panel"] = true,
+                ["Outline"] = true,
+                ["fugitive"] = true,
+                ["gitcommit"] = true,
+                [" "] = true
             }
             if tbl[vim.bo.filetype] then return false end
             return true
@@ -106,7 +112,11 @@ function config.lualine()
             lualine_a = {'mode'},
             lualine_b = {'branch'},
             lualine_c = {
-                {'filename', condition = conditions.check_filetype}, {
+                {
+                    'filename',
+                    condition = conditions.check_filetype
+                },
+                {
                     -- filesize component
                     function()
                         local function format_file_size(file)
@@ -129,11 +139,11 @@ function config.lualine()
                         return format_file_size(file)
                     end,
                     color = {fg = colors.grey},
-                    condition = conditions.buffer_not_empty
-                }, {
+                    condition = conditions.hide_in_width
+                },
+                {
                     'diff',
                     colored = true,
-                    condition = conditions.hide_in_width,
                     symbols = {
                         added = '  ',
                         modified = '  ',
@@ -142,12 +152,17 @@ function config.lualine()
                     color_added = colors.green,
                     color_modified = colors.blue,
                     color_removed = colors.red
-                }, {
+                },
+                {
                     -- Put the next section in the middle
                     function() return '%=' end
-                }, {
+                },
+                {
                     -- Lsp server name .
                     function()
+                        if not conditions.check_filetype() then
+                            return
+                        end
                         local msg = 'No Active Lsp'
                         local buf_ft = vim.api
                                            .nvim_buf_get_option(0, 'filetype')
@@ -166,7 +181,7 @@ function config.lualine()
                     end,
                     icon = ' ',
                     color = {fg = colors.grey, gui = 'bold'},
-                    condition = conditions.check_filetype
+                    condition = conditions.hide_in_width
                 }
             },
             lualine_x = {
@@ -188,10 +203,18 @@ function config.lualine()
                     'encoding',
                     color = {fg = colors.green},
                     condition = conditions.hide_in_width
-                }, {'fileformat', condition = conditions.hide_in_width}
+                },
+                {
+                    'fileformat',
+                    condition = conditions.hide_in_width
+                },
+                {
+                    'filetype',
+                    condition = conditions.hide_in_width
+                }
             },
-            lualine_y = {'filetype'},
-            lualine_z = {'progress', 'location'}
+            lualine_y = {'progress'},
+            lualine_z = {'location'}
         },
         inactive_sections = {
             lualine_a = {},
@@ -274,6 +297,5 @@ function config.floaterm()
     vim.g.floaterm_wintitle = 0
     vim.g.floaterm_autoclose = 1
 end
-
 
 return config
