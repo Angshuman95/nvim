@@ -24,26 +24,30 @@ function config.dashboard()
     vim.g.dashboard_default_executive = 'telescope'
     vim.g.dashboard_custom_section = {
         a = {
+            description = {'  New File           '},
+            command = 'DashboardNewFile'
+        },
+        b = {
             description = {'  Projects           '},
             command = 'Telescope project'
         },
-        b = {
-            description = {'  Find File          '},
+        c = {
+            description = {'  Find File          '},
             command = 'Telescope find_files'
         },
-        c = {
+        d = {
             description = {'  Recently Used Files'},
             command = 'Telescope oldfiles'
         },
-        d = {
+        e = {
             description = {'  Load Last Session  '},
             command = 'SessionLoad'
         },
-        e = {
+        f = {
             description = {'  Find Word          '},
             command = 'Telescope live_grep'
         },
-        f = {
+        g = {
             description = {'  Settings           '},
             command = 'Telescope vim_options'
         }
