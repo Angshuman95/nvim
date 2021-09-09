@@ -83,7 +83,6 @@ function config.whichkey()
         ["f"] = {"<cmd>Telescope find_files<CR>", "Find Files"},
         ["h"] = {"<cmd>set hlsearch!<CR>", "No Highlight"},
         ["m"] = {"<cmd>MaximizerToggle<CR>", "Maximize"},
-        ["p"] = {"<cmd>Telescope project<CR>", "Projects"},
         ["."] = {
             name = "+Virtual Text",
             s = {
@@ -218,6 +217,15 @@ function config.whichkey()
             x = {"<cmd>cclose<cr>", "Close Quickfix"},
             s = {"<cmd>SymbolsOutline<CR>", "Show Symbols"}
         },
+        p = {
+            name = "Package",
+            c = {"<cmd>PackerClean<cr>", "Clean"},
+            C = {"<cmd>PackerCompile<cr>", "Compile"},
+            i = {"<cmd>PackerInstall<cr>", "Install"},
+            s = {"<cmd>PackerSync<cr>", "Sync"},
+            S = {"<cmd>PackerStatus<cr>", "Status"},
+            u = {"<cmd>PackerUpdate<cr>", "Update"},
+        },
         r = {
             name = "+Rename",
             f = {
@@ -243,6 +251,7 @@ function config.whichkey()
             },
             m = {"<cmd>Telescope marks<cr>", "Marks"},
             M = {"<cmd>Telescope man_pages<cr>", "Man Pages"},
+            p = {"<cmd>Telescope project<cr>", "Projects"},
             r = {"<cmd>Telescope oldfiles<cr>", "Open Recent File"},
             R = {"<cmd>Telescope registers<cr>", "Registers"},
             t = {"<cmd>Telescope live_grep<cr>", "Text"},
