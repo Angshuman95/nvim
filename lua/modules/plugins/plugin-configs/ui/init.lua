@@ -253,9 +253,6 @@ end
 function config.tree()
     vim.g.nvim_tree_ignore = { '.git', 'node_modules', '.cache' }
     vim.g.nvim_tree_hide_dotfiles = 1
-    vim.g.nvim_tree_indent_markers = 1
-    vim.g.nvim_tree_follow = 1
-    vim.g.nvim_tree_auto_ignore_ft = {'startify', 'dashboard'}
     vim.g.nvim_tree_git_hl = 1
     vim.g.nvim_tree_highlight_opened_files = 1
     vim.g.nvim_tree_show_icons = {
@@ -286,7 +283,9 @@ function config.tree()
     require('nvim-tree').setup {
         disable_netrw = false,
         auto_close = true,
-        lsp_diagnostics = true
+        ignore_ft_on_setup = {'startify', 'dashboard'},
+        lsp_diagnostics = true,
+        follow = true
     }
 end
 
