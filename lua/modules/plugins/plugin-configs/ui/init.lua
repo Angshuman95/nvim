@@ -286,7 +286,10 @@ function config.tree()
         auto_close = true,
         ignore_ft_on_setup = {'startify', 'dashboard'},
         lsp_diagnostics = true,
-        follow = true
+        update_focused_file = {
+            enable = true,
+            update_cwd = true,
+        },
     }
 end
 
