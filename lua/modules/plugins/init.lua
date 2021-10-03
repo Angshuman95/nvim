@@ -12,13 +12,13 @@ modules['christianchiarulli/nvcode-color-schemes.vim'] = {
     config = ui_config.color,
 }
 
-modules['Mofiqul/vscode.nvim'] = {
-    config = ui_config.color,
-}
+-- modules['Mofiqul/vscode.nvim'] = {
+--     config = ui_config.color,
+-- }
 
-modules['ellisonleao/gruvbox.nvim'] = {
-    requires = {'rktjmp/lush.nvim', opt = true}
-}
+-- modules['ellisonleao/gruvbox.nvim'] = {
+--     requires = {'rktjmp/lush.nvim', opt = true}
+-- }
 
 -- Colorschemes -- End
 
