@@ -6,21 +6,21 @@ local modules = {}
 
 local ui_config = require('modules.plugins.plugin-configs.ui')
 
--- modules['rafamadriz/neon'] = {
---     config = ui_config.color
--- }
+-- Colorschemes -- Begin
 
 modules['christianchiarulli/nvcode-color-schemes.vim'] = {
-    config = ui_config.color
+    config = ui_config.color,
 }
 
--- modules['Mofiqul/vscode.nvim'] = {
---     config = ui_config.color
--- }
+modules['Mofiqul/vscode.nvim'] = {
+    config = ui_config.color,
+}
 
--- modules['marko-cerovac/material.nvim'] = {
---     config = ui_config.color
--- }
+modules['ellisonleao/gruvbox.nvim'] = {
+    requires = {'rktjmp/lush.nvim', opt = true}
+}
+
+-- Colorschemes -- End
 
 modules['glepnir/dashboard-nvim'] = {config = ui_config.dashboard}
 
