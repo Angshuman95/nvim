@@ -8,6 +8,10 @@ function config.color()
     -- VSCode
     -- vim.g.vscode_style = 'dark'
     -- vim.cmd('colorscheme vscode')
+
+    -- GruvBox
+    -- vim.o.background = "dark" -- or "light" for light mode
+    -- vim.cmd('colorscheme gruvbox')
 end
 
 function config.dashboard()
@@ -105,6 +109,7 @@ function config.lualine()
     require('lualine').setup {
         options = {
             icons_enabled = true,
+            -- theme = 'gruvbox',
             theme = 'onedark',
             -- theme = 'vscode',
             section_separators = {'', ''},
