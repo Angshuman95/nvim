@@ -289,12 +289,12 @@ function config.tree()
     require('nvim-tree').setup {
         disable_netrw = false,
         auto_close = true,
-        ignore_ft_on_setup = {'startify', 'dashboard'},
-        lsp_diagnostics = true,
-        update_focused_file = {
+        ignore_ft_on_setup = { 'startify', 'dashboard' },
+        diagnostics = {
             enable = true,
-            update_cwd = true,
+            icons = { hint = "", info = "", warning = "", error = "" }
         },
+        update_focused_file = { enable = true, update_cwd = true }
     }
 end
 
