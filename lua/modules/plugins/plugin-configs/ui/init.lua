@@ -2,16 +2,17 @@ local config = {}
 
 function config.color()
     -- NVCode
-    vim.g.nvcode_termcolors = 256
-    vim.cmd('colorscheme nvcode')
+    -- vim.g.nvcode_termcolors = 256
+    -- vim.cmd('colorscheme nvcode')
 
     -- VSCode
     -- vim.g.vscode_style = 'dark'
     -- vim.cmd('colorscheme vscode')
 
     -- GruvBox
-    -- vim.o.background = "dark" -- or "light" for light mode
-    -- vim.cmd('colorscheme gruvbox')
+    vim.o.background = 'dark' -- 'light' or 'dark'
+    vim.g.gruvbox_contrast_dark = 'hard' -- 'hard' 'medium' or 'low'
+    vim.cmd('colorscheme gruvbox')
 end
 
 function config.dashboard()
@@ -109,9 +110,10 @@ function config.lualine()
     require('lualine').setup {
         options = {
             icons_enabled = true,
-            -- theme = 'gruvbox',
-            theme = 'onedark',
+            theme = 'gruvbox',
+            -- theme = 'onedark',
             -- theme = 'vscode',
+            -- theme = 'codedark',
             section_separators = {'', ''},
             -- component_separators = {'', ''},
             component_separators = "",
