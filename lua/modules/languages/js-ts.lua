@@ -9,6 +9,7 @@ require'lspconfig'.tsserver.setup {
         '--stdio'
     },
     on_attach = lsp.enhance_attach,
+    capabilities = lsp.capabilities,
     root_dir = require('lspconfig/util').root_pattern("package.json",
                                                       "tsconfig.json",
                                                       "jsconfig.json", ".git")

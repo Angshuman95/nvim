@@ -1,7 +1,7 @@
 local data_dir = vim.fn.stdpath('data')
 local lsp = require('modules.lsp')
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+local capabilities = lsp.capabilities
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 require'lspconfig'.html.setup {

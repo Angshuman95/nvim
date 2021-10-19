@@ -6,5 +6,6 @@ require'lspconfig'.vimls.setup {
         data_dir .. "/lspinstall/vim/node_modules/.bin/vim-language-server",
         "--stdio"
     },
-    on_attach = lsp.common_on_attach
+    on_attach = lsp.common_on_attach,
+    capabilities = lsp.capabilities
 }

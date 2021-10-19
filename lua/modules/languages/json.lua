@@ -8,6 +8,7 @@ require'lspconfig'.jsonls.setup {
         "--stdio"
     },
     on_attach = lsp.common_on_attach,
+    capabilities = lsp.capabilities,
 
     commands = {
         Format = {

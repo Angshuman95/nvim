@@ -7,6 +7,7 @@ require'lspconfig'.pyright.setup {
         "--stdio"
     },
     on_attach = lsp.common_on_attach,
+    capabilities = lsp.capabilities,
     settings = {
         python = {
             analysis = {

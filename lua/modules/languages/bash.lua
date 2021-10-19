@@ -7,5 +7,6 @@ require'lspconfig'.bashls.setup {
         "start"
     },
     on_attach = lsp.common_on_attach,
+    capabilities = lsp.capabilities,
     filetypes = {"sh", "zsh"}
 }

@@ -7,6 +7,13 @@ vim.lsp.handlers['textDocument/publishDiagnostics'] =
 
 local L = {}
 
+if not packer_plugins['cmp-nvim-lsp'].loaded then
+    vim.cmd [[packadd cmp-nvim-lsp]]
+end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+L.capabilities = require('cmp_nvim_lsp').update_capabilities(capabilities)
+
 function L.enhance_attach(client, bufnr)
     local function buf_set_keymap(...)
         vim.api.nvim_buf_set_keymap(bufnr, ...)

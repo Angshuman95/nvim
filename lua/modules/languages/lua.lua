@@ -7,6 +7,7 @@ local sumneko_binary = sumneko_root_path .. "/sumneko-lua-language-server"
 require'lspconfig'.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},
     on_attach = lsp.enhance_attach,
+    capabilities = lsp.capabilities,
     settings = {
         Lua = {
             runtime = {

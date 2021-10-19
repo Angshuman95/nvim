@@ -7,6 +7,7 @@ local omnisharp_bin = data_dir .. "/lspinstall/csharp/omnisharp/run"
 require'lspconfig'.omnisharp.setup {
     cmd = {omnisharp_bin, "--languageserver", "--hostPID", tostring(pid)},
     on_attach = lsp.enhance_attach,
+    capabilities = lsp.capabilities,
     filetypes = {"cs", "vb"},
     init_options = {},
     autostart = true,

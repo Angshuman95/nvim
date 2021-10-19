@@ -3,7 +3,8 @@ local lsp = require('modules.lsp')
 
 require'lspconfig'.clangd.setup {
     cmd = {data_dir .. '/lspinstall/cpp/clangd/bin/clangd'},
-    on_attach = lsp.enhance_attach
+    on_attach = lsp.enhance_attach,
+    capabilities = lsp.capabilities
 }
 
 require('dap').adapters.cpp = {
