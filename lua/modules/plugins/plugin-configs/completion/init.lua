@@ -82,7 +82,7 @@ function config.telescope()
         defaults = {
             prompt_prefix = '🔭 ',
             layout_config = {prompt_position = 'top'},
-            selection_caret = " ",
+            selection_caret = ' ',
             sorting_strategy = 'ascending',
             file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
             grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep
@@ -104,33 +104,33 @@ function config.telescope()
 end
 
 function config.lspkind()
-    require("lspkind").init({
+    require('lspkind').init({
         with_text = true,
         symbol_map = {
-            Text = "",
-            Method = "ƒ",
-            Function = "",
-            Constructor = "",
-            Variable = "",
-            Class = "",
-            Interface = "ﰮ",
-            Module = "",
-            Property = "",
-            Unit = "",
-            Value = "",
-            Enum = "了",
-            Keyword = "",
-            Snippet = "﬌",
-            Color = "",
-            File = "",
-            Folder = "",
-            EnumMember = "",
-            Constant = "",
-            Struct = ""
+            Text = '',
+            Method = 'ƒ',
+            Function = '',
+            Constructor = '',
+            Variable = '',
+            Class = '',
+            Interface = 'ﰮ',
+            Module = '',
+            Property = '',
+            Unit = '',
+            Value = '',
+            Enum = '了',
+            Keyword = '',
+            Snippet = '﬌',
+            Color = '',
+            File = '',
+            Folder = '',
+            EnumMember = '',
+            Constant = '',
+            Struct = ''
         }
     })
 end
 
-function config.emmet() vim.g.user_emmet_mode = "inv" end
+function config.emmet() vim.g.user_emmet_mode = 'inv' end
 
 return config
