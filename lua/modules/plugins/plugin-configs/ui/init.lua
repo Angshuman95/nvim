@@ -96,6 +96,7 @@ function config.lualine()
                 ["Outline"] = true,
                 ["fugitive"] = true,
                 ["gitcommit"] = true,
+                ["Trouble"] = true,
                 [" "] = true
             }
             if tbl[vim.bo.filetype] then return false end
