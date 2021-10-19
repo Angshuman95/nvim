@@ -3,10 +3,6 @@ local config = {}
 function config.lsp_configs()
     require("modules.lsp")
     require("modules.languages")
-
-    if not packer_plugins["nvim-bqf"].loaded then
-        vim.cmd [[packadd nvim-bqf]]
-    end
 end
 
 function config.jdtls()

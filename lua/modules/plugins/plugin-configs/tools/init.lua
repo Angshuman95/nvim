@@ -169,8 +169,12 @@ function config.whichkey()
                     "Line Diagnostics"
                 },
                 f = {
-                    "<cmd>lua vim.lsp.diagnostic.set_loclist()<CR>",
+                    "<cmd>TroubleToggle lsp_document_diagnostics<CR>",
                     "File Diagnostics"
+                },
+                w = {
+                    "<cmd>TroubleToggle lsp_workspace_diagnostics<CR>",
+                    "Workspace Diagnostics"
                 },
                 ["["] = {
                     "<cmd>lua vim.lsp.diagnostic.goto_prev()<CR>",

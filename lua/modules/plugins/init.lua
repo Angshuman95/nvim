@@ -93,7 +93,12 @@ modules['neovim/nvim-lspconfig'] = {config = languages_config.lsp_configs}
 
 modules['kabouzeid/nvim-lspinstall'] = {}
 
-modules['kevinhwang91/nvim-bqf'] = {opt = true}
+modules['folke/trouble.nvim'] = {
+    requires = "kyazdani42/nvim-web-devicons",
+    config = function()
+        require('trouble').setup {}
+    end
+}
 
 modules['mfussenegger/nvim-jdtls'] = {
     ft = {'java'},
