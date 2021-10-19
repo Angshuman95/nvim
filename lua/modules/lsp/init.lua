@@ -23,7 +23,6 @@ function L.enhance_attach(client, bufnr)
     buf_set_keymap('n', '<A-i>', '<Cmd>lua vim.lsp.buf.implementation()<CR>',
                    opts)
     buf_set_keymap('n', '<A-r>', '<Cmd>lua vim.lsp.buf.references()<CR>', opts)
-    buf_set_keymap('n', '<A-p>', '<cmd>Lspsaga preview_definition<CR>', opts)
 
 end
 

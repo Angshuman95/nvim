@@ -61,12 +61,6 @@ function config.whichkey()
                             {noremap = true, silent = true})
     vim.api.nvim_set_keymap("v", "<leader>lf", ":Neoformat<CR>",
                             {noremap = true, silent = true})
-    vim.api.nvim_set_keymap('n', '<C-f>',
-                            '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(1)<CR>',
-                            {noremap = true})
-    vim.api.nvim_set_keymap('n', '<C-b>',
-                            '<cmd>lua require("lspsaga.action").smart_scroll_with_saga(-1)<CR>',
-                            {noremap = true})
 
     vim.api.nvim_buf_set_keymap(0, 'v', '<leader>ljav',
                                 '<Esc><Cmd>lua require("jdtls").extract_variable(true)<CR>',
@@ -206,10 +200,6 @@ function config.whichkey()
                     "<Cmd>lua require('jdtls').code_action(false, 'refactor')<CR>",
                     "Refactor"
                 }
-            },
-            p = {
-                name = "+Preview",
-                d = {"<cmd>Lspsaga preview_definition<CR>", "Definition <A-p>"}
             },
             q = {"<cmd>Telescope quickfix<cr>", "Quickfix"},
             r = {"<cmd>lua vim.lsp.buf.rename()<CR>", "Rename"},

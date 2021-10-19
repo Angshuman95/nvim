@@ -9,17 +9,6 @@ function config.lsp_configs()
     end
 end
 
-function config.lspsaga()
-    if not packer_plugins['lspsaga.nvim'].loaded then
-        vim.cmd [[packadd lspsaga.nvim]]
-    end
-
-    require("lspsaga").init_lsp_saga {
-        use_saga_diagnostic_sign = false,
-        code_action_icon = ''
-    }
-end
-
 function config.jdtls()
     local data_dir = vim.fn.stdpath('data')
     require('jdtls').start_or_attach({

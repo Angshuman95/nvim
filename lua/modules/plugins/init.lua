@@ -93,11 +93,6 @@ modules['neovim/nvim-lspconfig'] = {config = languages_config.lsp_configs}
 
 modules['kabouzeid/nvim-lspinstall'] = {}
 
-modules['glepnir/lspsaga.nvim'] = {
-    cmd = 'Lspsaga',
-    config = languages_config.lspsaga
-}
-
 modules['kevinhwang91/nvim-bqf'] = {opt = true}
 
 modules['mfussenegger/nvim-jdtls'] = {
