@@ -128,14 +128,24 @@ modules['rcarriga/nvim-dap-ui'] = {
 local completion_config = require('modules.plugins.plugin-configs.' ..
                                       'completion')
 
-modules['hrsh7th/nvim-compe'] = {
+modules['hrsh7th/nvim-cmp'] = {
     event = 'InsertEnter',
-    config = completion_config.compe
+    config = completion_config.cmp,
+    requires = {
+        {'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp'},
+        {'hrsh7th/cmp-vsnip', after = 'nvim-cmp'},
+        {'hrsh7th/cmp-buffer', after = 'nvim-cmp'},
+        {'hrsh7th/cmp-path', after = 'nvim-cmp'}
+    }
 }
 
-modules['hrsh7th/vim-vsnip'] = {after = 'nvim-compe'}
-
-modules['rafamadriz/friendly-snippets'] = {after = 'nvim-compe'}
+modules["hrsh7th/vim-vsnip"] = {
+    event = 'InsertEnter',
+    requires = {
+        {'hrsh7th/vim-vsnip-integ', after = 'vim-vsnip'},
+        {'rafamadriz/friendly-snippets', after = 'vim-vsnip'}
+    }
+}
 
 modules['nvim-telescope/telescope.nvim'] = {
     cmd = 'Telescope',
