@@ -116,8 +116,8 @@ function config.lualine()
             -- theme = 'onedark',
             -- theme = 'vscode',
             -- theme = 'codedark',
-            section_separators = {'', ''},
-            -- component_separators = {'', ''},
+            section_separators = { left = '', right = '' },
+            -- component_separators = { left = '', right = '' },
             component_separators = "",
             disabled_filetypes = {}
         },
@@ -174,7 +174,7 @@ function config.lualine()
                     -- Lsp server name .
                     function()
                         if not conditions.check_filetype() then
-                            return
+                            return ''
                         end
                         local msg = 'No Active Lsp'
                         local buf_ft = vim.api
