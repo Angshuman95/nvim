@@ -127,7 +127,7 @@ function config.lualine()
             lualine_c = {
                 {
                     'filename',
-                    condition = conditions.check_filetype
+                    cond = conditions.check_filetype
                 },
                 {
                     -- filesize component
@@ -152,7 +152,7 @@ function config.lualine()
                         return format_file_size(file)
                     end,
                     color = {fg = colors.grey},
-                    condition = conditions.hide_in_width
+                    cond = conditions.hide_in_width
                 },
                 {
                     'diff',
@@ -194,7 +194,7 @@ function config.lualine()
                     end,
                     icon = ' ',
                     color = {fg = colors.grey, gui = 'bold'},
-                    condition = conditions.hide_in_width
+                    cond = conditions.hide_in_width
                 }
             },
             lualine_x = {
@@ -215,15 +215,15 @@ function config.lualine()
                 {
                     'encoding',
                     color = {fg = colors.green},
-                    condition = conditions.hide_in_width
+                    cond = conditions.hide_in_width
                 },
                 {
                     'fileformat',
-                    condition = conditions.hide_in_width
+                    cond = conditions.hide_in_width
                 },
                 {
                     'filetype',
-                    condition = conditions.hide_in_width
+                    cond = conditions.hide_in_width
                 }
             },
             lualine_y = {'progress'},
@@ -232,7 +232,7 @@ function config.lualine()
         inactive_sections = {
             lualine_a = {},
             lualine_b = {},
-            lualine_c = {'filename', condition = conditions.buffer_not_empty},
+            lualine_c = {'filename'},
             lualine_x = {'location'},
             lualine_y = {},
             lualine_z = {}
