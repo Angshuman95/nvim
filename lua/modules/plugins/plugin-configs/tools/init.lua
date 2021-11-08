@@ -77,6 +77,7 @@ function config.whichkey()
         ["f"] = {"<cmd>Telescope find_files<CR>", "Find Files"},
         ["h"] = {"<cmd>set hlsearch!<CR>", "No Highlight"},
         ["m"] = {"<cmd>MaximizerToggle<CR>", "Maximize"},
+        ["w"] = {"<cmd>TroubleToggle<CR>", "Diagnostics"},
         ["."] = {
             name = "+Virtual Text",
             s = {
