@@ -96,7 +96,9 @@ modules['kabouzeid/nvim-lspinstall'] = {}
 modules['folke/trouble.nvim'] = {
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
-        require('trouble').setup {}
+        require('trouble').setup {
+            mode = "document_diagnostics"
+        }
     end
 }
 
