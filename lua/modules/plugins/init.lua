@@ -217,6 +217,10 @@ modules['windwp/nvim-spectre'] = {
     }
 }
 
+modules['easymotion/vim-easymotion'] = {
+    event = {'VimEnter', 'BufReadPre'}
+}
+
 modules['szw/vim-maximizer'] = {cmd = 'MaximizerToggle'}
 
 return modules
