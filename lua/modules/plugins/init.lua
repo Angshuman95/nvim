@@ -91,7 +91,7 @@ local languages_config = require('modules.plugins.plugin-configs.' ..
 
 modules['neovim/nvim-lspconfig'] = {config = languages_config.lsp_configs}
 
-modules['kabouzeid/nvim-lspinstall'] = {}
+modules['williamboman/nvim-lsp-installer'] = {}
 
 modules['folke/trouble.nvim'] = {
     requires = "kyazdani42/nvim-web-devicons",

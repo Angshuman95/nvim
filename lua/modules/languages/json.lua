@@ -4,7 +4,7 @@ local lsp = require('modules.lsp')
 require'lspconfig'.jsonls.setup {
     cmd = {
         "node", data_dir ..
-            "/lspinstall/json/vscode-json/json-language-features/server/dist/node/jsonServerMain.js",
+            "/lsp_servers/jsonls/node_modules/vscode-langservers-extracted/bin/vscode-json-language-server",
         "--stdio"
     },
     on_attach = lsp.common_on_attach,

@@ -1,8 +1,8 @@
 local data_dir = vim.fn.stdpath('data')
 local lsp = require('modules.lsp')
 
-local sumneko_root_path = data_dir .. "/lspinstall/lua"
-local sumneko_binary = sumneko_root_path .. "/sumneko-lua-language-server"
+local sumneko_root_path = data_dir .. "/lsp_servers/sumneko_lua/extension/server/bin"
+local sumneko_binary = sumneko_root_path .. "/lua-language-server"
 
 require'lspconfig'.sumneko_lua.setup {
     cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"},

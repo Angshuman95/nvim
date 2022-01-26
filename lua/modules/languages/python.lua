@@ -3,7 +3,7 @@ local lsp = require('modules.lsp')
 
 require'lspconfig'.pyright.setup {
     cmd = {
-        data_dir .. "/lspinstall/python/node_modules/.bin/pyright-langserver",
+        data_dir .. "/lsp_servers/python/node_modules/.bin/pyright-langserver",
         "--stdio"
     },
     on_attach = lsp.common_on_attach,

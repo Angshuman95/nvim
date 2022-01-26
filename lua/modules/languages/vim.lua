@@ -3,7 +3,7 @@ local lsp = require('modules.lsp')
 
 require'lspconfig'.vimls.setup {
     cmd = {
-        data_dir .. "/lspinstall/vim/node_modules/.bin/vim-language-server",
+        data_dir .. "/lsp_servers/vim/node_modules/.bin/vim-language-server",
         "--stdio"
     },
     on_attach = lsp.common_on_attach,

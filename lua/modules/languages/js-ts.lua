@@ -5,7 +5,7 @@ local dap = require('dap')
 require'lspconfig'.tsserver.setup {
     cmd = {
         data_dir ..
-            '/lspinstall/typescript/node_modules/.bin/typescript-language-server',
+            '/lsp_servers/tsserver/node_modules/.bin/typescript-language-server',
         '--stdio'
     },
     on_attach = lsp.enhance_attach,
