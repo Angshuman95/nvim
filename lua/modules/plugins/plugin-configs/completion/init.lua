@@ -105,7 +105,7 @@ end
 
 function config.lspkind()
     require('lspkind').init({
-        with_text = true,
+        mode = 'symbol_text',
         symbol_map = {
             Text = '',
             Method = 'ƒ',
