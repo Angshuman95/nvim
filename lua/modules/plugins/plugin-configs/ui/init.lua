@@ -10,10 +10,16 @@ function config.color()
     -- vim.cmd('colorscheme vscode')
 
     -- GruvBox
-    vim.o.background = 'dark' -- 'light' or 'dark'
-    vim.g.gruvbox_contrast_dark = 'hard' -- 'hard' 'medium' or 'low'
-    vim.g.gruvbox_italic = 1
-    vim.cmd('colorscheme gruvbox')
+    -- vim.o.background = 'dark' -- 'light' or 'dark'
+    -- vim.g.gruvbox_contrast_dark = 'hard' -- 'hard' 'medium' or 'low'
+    -- vim.g.gruvbox_italic = 1
+    -- vim.cmd('colorscheme gruvbox')
+
+    -- OneDark
+    require('onedark').setup {
+        style = 'warmer'
+    }
+    require('onedark').load()
 end
 
 function config.dashboard()
@@ -112,8 +118,8 @@ function config.lualine()
     require('lualine').setup {
         options = {
             icons_enabled = true,
-            theme = 'gruvbox',
-            -- theme = 'onedark',
+            -- theme = 'gruvbox',
+            theme = 'onedark',
             -- theme = 'vscode',
             -- theme = 'codedark',
             section_separators = { left = '', right = '' },

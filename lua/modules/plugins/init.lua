@@ -16,8 +16,12 @@ local ui_config = require('modules.plugins.plugin-configs.ui')
 --     config = ui_config.color,
 -- }
 
-modules['ellisonleao/gruvbox.nvim'] = {
-    requires = {'rktjmp/lush.nvim', opt = true},
+-- modules['ellisonleao/gruvbox.nvim'] = {
+--     requires = {'rktjmp/lush.nvim', opt = true},
+--     config = ui_config.color
+-- }
+
+modules['navarasu/onedark.nvim'] = {
     config = ui_config.color
 }
 
