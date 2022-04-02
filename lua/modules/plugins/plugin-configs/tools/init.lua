@@ -73,7 +73,7 @@ function config.whichkey()
         [';'] = {"<cmd>Dashboard<CR>", "Dashboard"},
         ["/"] = {"<cmd>CommentToggle<CR>", "Comment"},
         ["b"] = {"<cmd>Telescope buffers<CR>", "Buffers"},
-        ["e"] = {"<cmd>NvimTreeToggle<CR>", "Explorer"},
+        ["e"] = {"<cmd>NeoTreeFloatToggle<CR>", "Explorer"},
         ["f"] = {"<cmd>Telescope find_files<CR>", "Find Files"},
         ["h"] = {"<cmd>set hlsearch!<CR>", "No Highlight"},
         ["m"] = {"<cmd>MaximizerToggle<CR>", "Maximize"},

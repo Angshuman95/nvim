@@ -21,15 +21,13 @@ local ui_config = require('modules.plugins.plugin-configs.ui')
 --     config = ui_config.color
 -- }
 
-modules['navarasu/onedark.nvim'] = {
-    config = ui_config.color
-}
+modules['navarasu/onedark.nvim'] = {config = ui_config.color}
 
 -- Colorschemes -- End
 
 modules['glepnir/dashboard-nvim'] = {config = ui_config.dashboard}
 
-modules['hoob3rt/lualine.nvim'] = {
+modules['nvim-lualine/lualine.nvim'] = {
     config = ui_config.lualine,
     requires = {'kyazdani42/nvim-web-devicons', opt = true}
 }
@@ -39,10 +37,13 @@ modules['lukas-reineke/indent-blankline.nvim'] = {
     config = ui_config.indent_blankline
 }
 
-modules['kyazdani42/nvim-tree.lua'] = {
-    cmd = 'NvimTreeToggle',
-    config = ui_config.tree,
-    requires = 'kyazdani42/nvim-web-devicons'
+modules['nvim-neo-tree/neo-tree.nvim'] = {
+    requires = {
+        {"nvim-lua/plenary.nvim"},
+        {"kyazdani42/nvim-web-devicons"},
+        {"MunifTanjim/nui.nvim"}
+    },
+    config = ui_config.neotree
 }
 
 modules['voldikss/vim-floaterm'] = {config = ui_config.floaterm}
@@ -73,7 +74,7 @@ modules['mbbill/undotree'] = {cmd = 'UndotreeToggle'}
 modules['lewis6991/gitsigns.nvim'] = {
     event = 'BufReadPre',
     config = editor_config.gitsigns,
-    requires = {'nvim-lua/plenary.nvim', opt = true}
+    requires = {'nvim-lua/plenary.nvim'}
 }
 
 modules['tpope/vim-fugitive'] = {}
@@ -100,9 +101,7 @@ modules['williamboman/nvim-lsp-installer'] = {}
 modules['folke/trouble.nvim'] = {
     requires = "kyazdani42/nvim-web-devicons",
     config = function()
-        require('trouble').setup {
-            mode = "document_diagnostics"
-        }
+        require('trouble').setup {mode = "document_diagnostics"}
     end
 }
 
@@ -157,10 +156,10 @@ modules['nvim-telescope/telescope.nvim'] = {
     cmd = 'Telescope',
     config = completion_config.telescope,
     requires = {
-        {'nvim-lua/popup.nvim', opt = true},
-        {'nvim-lua/plenary.nvim', opt = true},
-        {'nvim-telescope/telescope-fzy-native.nvim', opt = true},
-        {'nvim-telescope/telescope-project.nvim', opt = true}
+        {'nvim-lua/popup.nvim'},
+        {'nvim-lua/plenary.nvim'},
+        {'nvim-telescope/telescope-fzy-native.nvim'},
+        {'nvim-telescope/telescope-project.nvim'}
     }
 }
 
@@ -216,14 +215,12 @@ modules['windwp/nvim-spectre'] = {
     event = 'VimEnter',
     config = tools_config.spectre,
     requires = {
-        {'nvim-lua/popup.nvim', opt = true},
-        {'nvim-lua/plenary.nvim', opt = true}
+        {'nvim-lua/popup.nvim'},
+        {'nvim-lua/plenary.nvim'}
     }
 }
 
-modules['easymotion/vim-easymotion'] = {
-    event = {'VimEnter', 'BufReadPre'}
-}
+modules['easymotion/vim-easymotion'] = {event = {'VimEnter', 'BufReadPre'}}
 
 modules['szw/vim-maximizer'] = {cmd = 'MaximizerToggle'}
 
