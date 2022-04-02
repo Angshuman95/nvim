@@ -61,6 +61,8 @@ function config.whichkey()
                             {noremap = true, silent = true})
     vim.api.nvim_set_keymap("v", "<leader>lf", ":Neoformat<CR>",
                             {noremap = true, silent = true})
+    vim.api.nvim_set_keymap("n", "<A-e>", ":NeoTreeFocusToggle<CR>",
+                            {noremap = true, silent = true})
 
     vim.api.nvim_buf_set_keymap(0, 'v', '<leader>ljav',
                                 '<Esc><Cmd>lua require("jdtls").extract_variable(true)<CR>',
